@@ -1,0 +1,28 @@
+{
+  "name": "jonjonsiler.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonjonsiler/jonjonsiler.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonjonsiler/jonjonsiler.github.io/issues"
+  },
+  "homepage": "https://github.com/jonjonsiler/jonjonsiler.github.io#readme",
+  "dependencies": {
+    "@astrojs/react": "^4.4.0",
+    "@astrojs/vue": "^5.1.1",
+    "astro": "^5.14.1"
+  }
+}
