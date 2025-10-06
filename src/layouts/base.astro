@@ -1,0 +1,29 @@
+---
+import HeadBase from '/src/partials/head-base.astro';
+import Header from '/src/components/header.astro';
+import NavigationMenu from '/src/components/navigation.astro';
+import Banner from '/src/components/banner.astro';
+import Footer from '/src/components/footer.astro';
+
+import JqueryPlusImports from '/src/partials/jquery-plus.astro';
+import AppImports from '/src/partials/app.astro';
+
+import '/src/styles/main.scss';
+
+const { title } = Astro.props;
+---
+<html>
+	<head>
+		<HeadBase title={title}/>
+	</head>
+	<body>
+    <div id="wrapper">
+      <Header />
+	    <NavigationMenu />
+      <slot />
+      <Footer />
+    </div>
+		<JqueryPlusImports />
+		<AppImports />
+	</body>
+</html>
