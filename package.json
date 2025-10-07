@@ -25,17 +25,17 @@
     "@astrojs/react": "^4.4.0",
     "@astrojs/ts-plugin": "^1.10.4",
     "@astrojs/vue": "^5.1.1",
-    "astro": "^5.14.1",
-    "sass": "^1.93.2",
-    "typescript": "^5.9.3"
-  },
-  "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
-    "@types/react": "^19.2.1",
-    "@types/react-dom": "^19.2.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "astro": "^5.14.1",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "sass": "^1.93.2",
     "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3",
     "vue": "^3.5.22"
   }
 }
