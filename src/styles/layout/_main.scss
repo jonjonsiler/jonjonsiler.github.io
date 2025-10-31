@@ -7,8 +7,6 @@
 /* Main */
 
 	#main {
-		background-color: _palette(bg-alt);
-
 		> * {
 			border-top: solid 1px _palette(border);
 
@@ -20,7 +18,7 @@
 		}
 
 		&.alt {
-			background-color: transparent;
+			background-color: _palette(bg-alt);
 			border-bottom: solid 1px _palette(border);
 		}
 	}
