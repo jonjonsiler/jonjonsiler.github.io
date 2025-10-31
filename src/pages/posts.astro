@@ -1,0 +1,16 @@
+---
+import GenericPageLayout from '@layouts/generic.astro';
+import Post from '@components/post.tsx';
+
+import posts from "../../public/api/posts.json";
+---
+<GenericPageLayout title="Blog Posts">
+  <main id="main" class="page">
+    <section class="container">
+      <h1 class="text-3xl font-bold mb-8 text-center">Microjournal</h1>
+      {posts.map((post) => (
+        <Post post={post} client:load />
+      ))}
+    </section>
+  </main>
+</GenericPageLayout>
