@@ -1,0 +1,16 @@
+@use "./variables" as *;
+
+// Load the full Bootstrap stylesheet after the variable overrides above.
+@import "bootstrap/scss/bootstrap";
+
+// Additional Storybook-only tweaks can live here.
+body {
+  background-color: $body-bg;
+  color: $body-color;
+  font-family: $font-family-sans-serif;
+}
+
+#storybook-root {
+  min-height: 100vh;
+  padding: 1.5rem;
+}

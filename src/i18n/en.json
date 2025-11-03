@@ -1,0 +1,24 @@
+{
+    "dashboard": {
+        "SUMMARY": "Summary",
+        "WEEKLY_PLAN": "Weekly Plan"
+    },
+    "planner": {
+        "CURRICULUM_ALIGNED_TO": "Aligned to <curriculumImage></curriculumImage>",
+        "CURRICULUM_ALIGNED_IN_PARTNERSHIP": "Aligned in partnership with <partnerImage></partnerImage>",
+        "CURRICULUM_ALIGNED_TO_IN_PARTNERSHIP": "Aligned to <curriculumImage></curriculumImage> in partnership with <partnerImage></partnerImage>",
+        "SUMMARY_HEADER": "Take Action Summary",
+        "TAKE_ACTION_HEADER": "Take Action",
+        "TO_DO_HEADER": "To Do",
+        "STUDENTS_STRUGGLING_one": "1 student is struggling",
+        "STUDENTS_STRUGGLING_other": "{{count}} students are struggling",
+        "STUDENTS_SHOWED_GROWTH_one": "1 student showed growth",
+        "STUDENTS_SHOWED_GROWTH_other": "{{count}} students showed growth",
+        "SKILLS_TO_BE_TAUGHT_one": "1 skill to be taught",
+        "SKILLS_TO_BE_TAUGHT_other": "{{count}} skills to be taught",
+        "STUDENTS_NOT_READY_one": "1 student is not ready",
+        "STUDENTS_NOT_READY_other": "{{count}} students are not ready",
+        "STUDENTS_UNDERBOOKED_one": "1 student is underbooked",
+        "STUDENTS_UNDERBOOKED_other": "{{count}} students are underbooked"
+    }
+}

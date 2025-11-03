@@ -1,0 +1,47 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "types": [
+      "vite/client",
+      "node"
+    ],
+    "paths": {
+      "@enums": ["src/enums/index.ts", "src/enums"],
+      "@enums/*": ["src/enums/*"],
+      "@models": ["src/models/index.ts", "src/models"],
+      "@models/*": ["src/models/*"],
+      "@hooks": ["src/hooks/index.ts", "src/hooks"],
+      "@hooks/*": ["src/hooks/*"],
+      "@services": ["src/services/index.ts", "src/services"],
+      "@services/*": ["src/services/*"],
+      "@components": ["src/components", "src/components/index.ts"],
+      "@components/*": ["src/components/*"],
+      "@utilities": ["src/utilities/index.ts", "src/utilities"],
+      "@utilities/*": ["src/utilities/*"],
+      "@styles": [".storybook/styles"],
+      "@styles/*": [".storybook/styles/*"],
+      "@images/": ["public/images"],
+      "@images/*": ["public/images/*"],
+      "@/*": ["src/*"]
+    },
+  },
+  "include": [
+    ".storybook/**/*",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.cts",
+    "src/**/*.mts",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx",
+    "src/**/*.stories.js",
+    "src/**/*.stories.jsx",
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "dist",
+    ".astro",
+    "node_modules"
+  ]
+}
