@@ -1,3 +1,9 @@
+@import 'tailwindcss';
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --color-brand: #38bdf8;
+}
+
 @import 'libs/vars';
 @import 'libs/functions';
 @import 'libs/mixins';

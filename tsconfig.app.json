@@ -3,9 +3,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "plugins": [{ "name": "@astrojs/ts-plugin" }],
-    "paths": {
-      "@/*": ["src/*"]
-    }
   },
   "include": [".astro/types.d.ts", "src/**/*"],
   "exclude": ["dist"]

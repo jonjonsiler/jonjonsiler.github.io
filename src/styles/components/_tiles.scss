@@ -47,11 +47,9 @@
 
 			h3 {
 				font-size: 1.75em;
-
-				a {
-					&:hover {
-						color: inherit !important;
-					}
+				
+				a:hover {
+					color: inherit !important;
 				}
 			}
 
@@ -63,6 +61,26 @@
 				top: 0;
 				width: 100%;
 				z-index: 4;
+			}
+
+			&.active {
+				display: block;
+				height: auto;
+				width: 100% !important;
+				background-color: antiquewhite !important;
+				background-image: none !important;
+
+				h3:after {
+					background-color: #333;
+				}
+				h3, h3 ~ p {
+					color: #333;
+					text-shadow: .125rem .125rem .25rem rgba(120, 120, 120, 0.2);
+				}
+
+				&:before, &:after {
+					display: none;
+				}
 			}
 
 			&:before {
