@@ -1,0 +1,46 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "types": [
+      "vite/client",
+      "node"
+    ],
+    "paths": {
+      "@enums": [".storybook/enums/index.ts", ".storybook/enums"],
+      "@enums/*": [".storybook/enums/*"],
+      "@models": [".storybook/models/index.ts", ".storybook/models"],
+      "@models/*": [".storybook/models/*"],
+      "@hooks": [".storybook/hooks/index.ts", ".storybook/hooks"],
+      "@hooks/*": [".storybook/hooks/*"],
+      "@services": [".storybook/services/index.ts", ".storybook/services"],
+      "@services/*": [".storybook/services/*"],
+      "@components": [".storybook/components/index.ts", ".storybook/components"],
+      "@components/*": [".storybook/components/*"],
+      "@utilities": [".storybook/utilities/index.ts", ".storybook/utilities"],
+      "@utilities/*": [".storybook/utilities/*"],
+      "@styles": [".storybook/styles"],
+      "@styles/*": [".storybook/styles/*"],
+      "@images/": ["public/images"],
+      "@images/*": ["public/images/*"],
+      "@/*": ["src/*"]
+    },
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.tsx",
+    "./**/*.cts",
+    "./**/*.mts",
+    "./**/*.js",
+    "./**/*.jsx",
+    "./**/*.stories.ts",
+    "./**/*.stories.tsx",
+    "./**/*.stories.js",
+    "./**/*.stories.jsx",
+    "./**/*.d.ts"
+  ],
+  "exclude": [
+    "dist",
+    ".astro",
+    "node_modules"
+  ]
+}

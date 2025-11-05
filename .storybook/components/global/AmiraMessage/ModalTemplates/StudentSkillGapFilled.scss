@@ -1,0 +1,257 @@
+.skill-gap-filled-modal {
+  max-width: 55rem;
+  padding-top: 1.5rem;
+
+  .loading-state {
+    text-align: center;
+    padding: 4rem 2rem;
+
+    .spinner-border {
+      color: var(--brand-primary, #7c3aed);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--text-secondary, #6b7280);
+      margin: 0;
+    }
+  }
+
+  .progress-content {
+    margin-bottom: 2rem;
+
+    .list-body {
+      max-height: 50dvh;
+      overflow: auto;
+    }
+  }
+
+  .student-skill-list {
+    border-radius: 0.75rem;
+    border: 1px solid var(--Card-stroke, #f2e6f5);
+    overflow: hidden;
+    background: white;
+
+    .list-header {
+      background: var(--greystone-175, #eef0f4);
+
+      .header-row {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: var(--brand-amira-charcoal, #262626);
+        text-transform: uppercase;
+        letter-spacing: 0.025em;
+
+        .student-col {
+          flex: 0 0 14rem;
+          min-width: 14rem;
+        }
+
+        .skill-col {
+          flex: 1;
+          min-width: 16rem;
+        }
+
+        .progress-col {
+          flex: 0 0 20rem;
+          text-align: center;
+        }
+      }
+    }
+
+    .list-body {
+      .progress-row {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid var(--Card-stroke, #f2e6f5);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background-color: var(--greystone-50, #fcfcfd);
+        }
+      }
+    }
+  }
+
+  .student-info {
+    flex: 0 0 14rem;
+    min-width: 14rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    line-height: 2;
+
+    .student-name {
+      font-weight: 500;
+      color: var(--brand-amira-charcoal, #262626);
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .skill-info {
+    flex: 1;
+    min-width: 16rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .skill-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .skill-name {
+        font-weight: 500;
+        color: var(--brand-amira-charcoal, #262626);
+        font-size: 0.9rem;
+        line-height: 1.2;
+      }
+
+      .skill-id {
+        font-size: 0.75rem;
+        color: var(--text-secondary, #6b7280);
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        letter-spacing: 0.025em;
+      }
+    }
+
+    .lesson-details {
+      .lesson-name {
+        font-size: 0.8rem;
+        color: var(--text-tertiary, #9ca3af);
+        font-style: italic;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  .mastery-progress {
+    flex: 0 0 20rem;
+    display: flex;
+    justify-content: center;
+
+    // Override StatusCard styles for better integration
+    .status-card {
+      max-width: 20rem;
+      min-width: 20rem;
+      border: 1px solid var(--Card-stroke, #f2e6f5);
+
+      .status-card-container {
+        .status-text {
+          font-size: 0.75rem;
+          font-weight: 600;
+        }
+
+        .status-card-text {
+          font-size: 0.7rem;
+        }
+      }
+
+      .mastery-change-graph {
+        img {
+          width: 50px;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .mastery-comparison {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .mastery-point {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+
+      .mastery-label {
+        font-size: 0.75rem;
+        color: var(--text-secondary, #6b7280);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.025em;
+      }
+    }
+
+    .arrow-container {
+      display: flex;
+      align-items: center;
+      margin: 0 0.5rem;
+
+      svg {
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .no-progress-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary, #6b7280);
+
+    .empty-illustration {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    h4 {
+      color: var(--brand-amira-charcoal, #262626);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      max-width: 30rem;
+      margin: 0 auto;
+    }
+  }
+
+  .modal-footer {
+    border-top: 1px solid var(--Card-stroke, #f2e6f5);
+    padding-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .why-this-matters {
+      color: var(--text-secondary, #6b7280);
+      font-size: 0.875rem;
+      text-align: center;
+      margin: 0;
+      line-height: 1.5;
+
+      strong {
+        color: var(--brand-amira-charcoal, #262626);
+      }
+    }
+
+    .dismiss-button {
+      color: #80089d;
+      font-weight: 600;
+      line-height: 16px;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+    }
+  }
+}

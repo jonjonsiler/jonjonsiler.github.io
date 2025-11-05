@@ -1,0 +1,48 @@
+$white: #FFFFFF;
+$black: #000000;
+
+$amira-purple: #6C63FF;
+$amira-gray: #495665;
+$amira-charcoal: #333333;
+$amira-purple-midlight: #9b59b6;
+$amira-green: #6BCB77;
+$amira-light-green: #D4F5E1;
+$amira-dark-green: #2F855A;
+$amira-light-purple: #EDEBFF;
+$amira-dark-purple: #4B3FBF;
+$light-grey: #F5F5F5;
+$dark-grey: #555555;
+
+$data-vis-red: #FF6B6B;
+$data-vis-yellow: #FFD93D;
+$greystone-150: #E5E7EB;
+$greystone-250: #D1D5DB;
+$greystone-250b: #D4D7DB;
+$greystone-400b: #B0B3B8;
+$border-grey: #D1D5DB;
+
+$soft-white: #F9FAFB;
+$red-dot-primary: #FF6B6B;
+$red-dot-secondary: #FF8787;
+$baby-blue: #6EC8FF;
+$pastel-purple: #f3e8ff;
+$lighter-pink: #FFF0F0;
+$vivid-pink-red: #D50100;
+$light-yellow: #FFF9E5;
+$reddish-orange: #FF6D00;
+$orange: #FFA900;
+
+$report-danger: #FF4C61;
+$report-warn: #FFA900;
+$report-success: #00CA72;
+
+$primary: #0d6efd;
+$secondary: $amira-gray;
+$body-bg: $soft-white;
+$body-color: $amira-charcoal;
+
+// Alerts
+$alert-colors: (
+  alert-common: #80089D, // #81139B,
+  alert-urgent: #aa084e, // #E52E6B,
+);

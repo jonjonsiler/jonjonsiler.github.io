@@ -1,0 +1,51 @@
+@use "@styles/variables" as *;
+
+.data-failed-container {
+  padding: 1rem;
+  background: $pastel-purple;
+  border-radius: 0.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-weight: 700;
+  min-height: 12.5rem;
+
+  .reload-button {
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    background: $white;
+    border-radius: 0.9375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: $amira-purple;
+    font-weight: 600;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 1.25rem;
+      padding: 0.09375rem;
+      background: linear-gradient(to bottom, $amira-purple-midlight, $amira-purple);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    img {
+      height:1.5rem;
+      width:1.5rem;
+    }
+  }
+}

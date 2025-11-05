@@ -1,0 +1,29 @@
+:root {
+  --user-badge-color: white;
+  --user-badge-more-bg-color: transparent;
+  --user-badge-more-color: #9c9c9c;
+  --user-badge-more-border-color: var(--user-badge-more-color);
+}
+
+.user-badge {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02438rem;
+  border-radius: 100rem;
+  color: var(--user-badge-color);
+  flex: 0 0 2rem;
+
+  &-more {
+    background-color: transparent;
+    border: dashed 0.125rem var(--user-badge-more-border-color);
+    font-weight: 500;
+    color: var(--user-badge-more-color);
+  }
+}

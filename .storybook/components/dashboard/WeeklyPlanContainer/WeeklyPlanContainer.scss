@@ -1,0 +1,39 @@
+.manage-instruct-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--amira-purple);
+  font-weight: 600;
+  gap: 0.2rem;
+
+  img {
+    width: 1.5rem;
+  }
+}
+
+.instruct-plan-alert {
+  font-size: 1rem;
+  font-weight: 500;
+  height: 9.5rem;
+
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.partner-logo {
+  height: 3.5rem;
+}
+
+.non-partner-logo {
+  height: 2.5rem;
+}
+
+.mini-lesson-card-bg {
+  background-color: #FDF7FF;
+  align-items: center;
+  padding: 0 1rem 0.5rem;
+  border-radius: 0.5rem;
+}

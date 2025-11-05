@@ -1,0 +1,103 @@
+.donut-chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 0 0;
+  width: 100%;
+  height: 100%;
+  min-height: 12rem;
+  border-radius: 0.625rem;
+  background: linear-gradient(0deg, #FDF7FF 0%, #FDF7FF 100%), var(--greystone-100, #F9FAFB);
+  &-inner {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .donut-responsive-container {
+    padding: 0.5rem;
+  }
+
+  .donut-chart-data-label {
+    font-family: "Inter", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #393939;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .donut-chart-percentage-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 700;
+    width: 6rem;
+    height: 4.2rem;
+    line-height: normal;
+
+    .percentage-symbol {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+  }
+
+  .recharts-wrapper,
+  .recharts-surface {
+    cursor: pointer;
+  }
+}
+
+.data-pill {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  height: auto;
+  width: auto;
+  border-radius: 0.8rem;
+  background-color: #262626;
+  overflow: visible;
+  &-label {
+    color: #fff;
+    background-color: #262626;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+.no-focus-outline {
+  outline: none;
+}
+
+.chart-button-assessment-status {
+  z-index: 100;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.25rem;
+  background: none;
+  border: none;
+  padding: 0;
+  display: block;
+  width: 2rem;
+  height: 1.5rem;
+  cursor: pointer;
+
+  .chart-icon-assessment-status {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+
+}

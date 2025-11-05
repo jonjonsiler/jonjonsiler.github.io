@@ -1,0 +1,17 @@
+@use "./variables" as *;
+@import "./bootstrap";
+@import './root';
+
+@include bsBanner("");
+
+// Additional Storybook-only tweaks can live here.
+body {
+  background-color: $body-bg;
+  color: $body-color;
+  font-family: $font-family-sans-serif;
+}
+
+#storybook-root {
+  min-height: 100vh;
+  padding: 1.5rem;
+}

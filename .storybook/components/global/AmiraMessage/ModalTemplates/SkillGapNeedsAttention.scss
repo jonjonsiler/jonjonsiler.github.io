@@ -1,0 +1,388 @@
+
+
+.skill-gap-needs-attention-modal {
+  max-width: 70rem;
+  padding-top: 1.5rem;
+
+  .loading-state {
+    text-align: center;
+    padding: 4rem 2rem;
+
+    .spinner-border {
+      color: var(--brand-primary, #7c3aed);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--text-secondary, #6b7280);
+      margin: 0;
+    }
+  }
+
+  .progress-content {
+    margin-bottom: 2rem;
+
+    .list-body {
+      max-height: 50dvh;
+      overflow: auto;
+    }
+  }
+
+  .student-skill-list {
+    border-radius: 0.75rem;
+    border: 1px solid var(--Card-stroke, #f2e6f5);
+    overflow: hidden;
+    background: white;
+
+    .list-header {
+      background: var(--greystone-175, #eef0f4);
+
+      .header-row {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: var(--brand-amira-charcoal, #262626);
+        text-transform: uppercase;
+        letter-spacing: 0.025em;
+
+        .student-col {
+          flex: 0 0 14rem;
+          min-width: 14rem;
+        }
+
+        .skill-col {
+          flex: 1;
+          min-width: 12rem;
+        }
+
+        .mastery-col {
+          flex: 0 0 20rem;
+          text-align: center;
+        }
+
+        .action-col {
+          flex: 0 0 12rem;
+          text-align: center;
+        }
+      }
+    }
+
+    .list-body {
+      .progress-row {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid var(--Card-stroke, #f2e6f5);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background-color: var(--greystone-50, #fcfcfd);
+        }
+      }
+    }
+  }
+
+  .student-info {
+    flex: 0 0 14rem;
+    min-width: 14rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    line-height: 2;
+
+    .student-name {
+      font-weight: 500;
+      color: var(--brand-amira-charcoal, #262626);
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .skill-info {
+    flex: 1;
+    min-width: 12rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .skill-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .skill-name {
+        font-weight: 500;
+        color: var(--brand-amira-charcoal, #262626);
+        font-size: 0.9rem;
+        line-height: 1.2;
+      }
+
+      .skill-id {
+        font-size: 0.75rem;
+        color: var(--text-secondary, #6b7280);
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        letter-spacing: 0.025em;
+      }
+    }
+
+    .lesson-details {
+      .lesson-name {
+        font-size: 0.8rem;
+        color: var(--text-tertiary, #9ca3af);
+        font-style: italic;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  .mastery-progress {
+    flex: 0 0 20rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mastery-progress {
+    // Override StatusCard styles for better integration
+    .status-card {
+      max-width: 18rem;
+      min-width: 18rem;
+      border: 1px solid var(--Card-stroke, #f2e6f5);
+
+      .status-card-container {
+        .status-text {
+          font-size: 0.75rem;
+          font-weight: 600;
+        }
+
+        .status-card-text {
+          font-size: 0.7rem;
+        }
+      }
+
+      .mastery-change-graph {
+        img {
+          width: 50px;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .action-needed {
+    flex: 0 0 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .review-lesson-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--brand-primary, #7c3aed);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+
+      span {
+        white-space: nowrap;
+      }
+
+      .icon {
+        display: flex;
+        align-items: center;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover {
+        color: var(--brand-primary-dark, #6b21a8);
+        
+        .icon {
+          transform: translateX(2px);
+        }
+      }
+
+      &:active {
+        color: var(--brand-primary-darker, #581c87);
+      }
+    }
+  }
+
+  .mastery-comparison {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .mastery-point {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+
+      .mastery-label {
+        font-size: 0.75rem;
+        color: var(--text-secondary, #6b7280);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.025em;
+      }
+    }
+
+    .arrow-container {
+      display: flex;
+      align-items: center;
+      margin: 0 0.5rem;
+
+      svg {
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .no-progress-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary, #6b7280);
+
+    .empty-illustration {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    h4 {
+      color: var(--brand-amira-charcoal, #262626);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      max-width: 30rem;
+      margin: 0 auto;
+    }
+  }
+
+  .modal-footer {
+    border-top: 1px solid var(--Card-stroke, #f2e6f5);
+    padding-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .why-this-matters {
+      color: var(--text-secondary, #6b7280);
+      font-size: 0.875rem;
+      text-align: center;
+      margin: 0;
+      line-height: 1.5;
+      width: 100%;
+
+      strong {
+        color: var(--brand-amira-charcoal, #262626);
+      }
+    }
+
+    .dismiss-button {
+      color: #80089d;
+      font-weight: 600;
+      line-height: 16px;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+  // Navigation overlay styles
+  .navigation-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: inherit;
+
+    .navigation-content {
+      text-align: center;
+      
+      .spinner-border {
+        color: #667eea;
+        margin-bottom: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+      
+      .navigation-status {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--brand-amira-charcoal, #262626);
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .skill-gap-needs-attention-modal {
+    padding: 1rem;
+    
+    .progress-content {
+      .student-skill-list {
+        .list-header .header-row,
+        .list-body .progress-row {
+          flex-direction: column;
+          gap: 0.75rem;
+          text-align: left;
+        }
+        
+        .list-header .header-row {
+          display: none; // Hide header on mobile for cleaner look
+        }
+        
+        .list-body .progress-row {
+          padding: 1rem;
+          
+          .student-info {
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--Card-stroke, #f2e6f5);
+          }
+          
+          .skill-info {
+            margin-bottom: 0.5rem;
+          }
+          
+          .mastery-progress {
+            margin-bottom: 0.5rem;
+          }
+          
+          .action-needed {
+            .review-lesson-link {
+              justify-content: center;
+              padding: 0.75rem;
+            }
+          }
+        }
+      }
+    }
+  }
+} 

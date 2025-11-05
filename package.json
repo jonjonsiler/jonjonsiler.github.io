@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "typecheck": "astro check"
+    "typecheck": "astro check",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build"
   },
   "repository": {
     "type": "git",
@@ -21,21 +23,46 @@
     "url": "https://github.com/jonjonsiler/jonjonsiler.github.io/issues"
   },
   "homepage": "https://github.com/jonjonsiler/jonjonsiler.github.io#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@reduxjs/toolkit": "^2.9.2",
+    "bootstrap": "^5.3.8",
+    "classnames": "^2.5.1",
+    "howler": "^2.2.4",
+    "i18next": "^25.6.0",
+    "moment": "^2.30.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-hot-toast": "^2.6.0",
+    "react-i18next": "^16.2.3",
+    "react-icons": "^5.5.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.9.5",
+    "react-select": "^5.10.2",
+    "recharts": "^3.3.0",
+    "vue": "^3.5.22"
+  },
   "devDependencies": {
     "@astrojs/react": "^4.4.1",
     "@astrojs/ts-plugin": "^1.10.5",
     "@astrojs/vue": "^5.1.2",
+    "@storybook/addon-essentials": "^8.4.6",
+    "@storybook/addon-interactions": "^8.4.6",
+    "@storybook/addon-links": "^8.4.6",
+    "@storybook/react": "^8.4.6",
+    "@storybook/react-vite": "^8.4.6",
+    "@storybook/test": "^8.4.6",
     "@tailwindcss/vite": "^4.1.14",
+    "@types/bootstrap": "^5.2.10",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
     "astro": "^5.15.3",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
     "sass": "^1.93.2",
+    "storybook": "^8.4.6",
     "tailwindcss": "^4.1.14",
     "typescript": "^5.9.3",
-    "vue": "^3.5.22"
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }
