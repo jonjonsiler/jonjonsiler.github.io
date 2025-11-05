@@ -15,7 +15,6 @@ export const Tile: React.FC<TileBlockProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const handleToggle = useCallback(() => {
-    console.log('toggling');
     setOpen(o => !o)
   }, []);
   return (
