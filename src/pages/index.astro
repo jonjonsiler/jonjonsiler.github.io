@@ -2,7 +2,7 @@
 import HomePageLayout from '@layouts/home.astro';
 import { Tiles } from '@components/tiles';
 
-const response = await fetch('http://localhost:4321/api/features.json');
+const response = await fetch('/api/features.json');
 const features = await response.json() as Array<{
   title: string;
   subtitle: string;
