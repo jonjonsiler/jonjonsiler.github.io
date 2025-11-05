@@ -1,0 +1,1 @@
+export type ButtonSizeVariant = 'sm' | 'md' | 'lg';

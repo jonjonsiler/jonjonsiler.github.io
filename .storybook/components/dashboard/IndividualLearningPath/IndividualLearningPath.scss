@@ -1,0 +1,122 @@
+@use "@styles/variables" as *;
+
+.learning-path-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $amira-purple;
+  font-weight: 600;
+  gap: 0.6rem;
+
+  img {
+    width: 1.2rem;
+  }
+}
+
+.usage-goals-bg {
+  height: 100%;
+  position: relative;
+  padding: 2rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("/images/bg-instruct.svg");
+    background-size: 100%;
+    background-position: top;
+    z-index: 0;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.usage-goals-content {
+  background-color: $soft-white;
+  position: relative;
+  z-index: 1;
+  border-radius: 0.625rem;
+  padding: 1rem 2rem;
+  width: 100%;
+}
+
+.usage-goals-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  h5 {
+    font-weight: 600;
+  }
+
+  .date-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    gap: 0.5rem;
+  }
+}
+
+.goals-stats-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
+  gap: 1rem;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .outer-number-container {
+    padding: 1.25rem;
+    
+    span {
+      white-space: nowrap;
+    }
+
+    .number-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      white-space: nowrap;
+
+      .red-dot {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        background: repeating-linear-gradient(
+          -45deg,
+          $red-dot-primary,
+          $red-dot-primary 0.0625rem,
+          $red-dot-secondary 0.0625rem,
+          $red-dot-secondary 0.25rem
+        );
+      }
+
+      .blue-dot {
+        background: $baby-blue;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+      }
+
+      .green-dot {
+        background: $amira-green;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+      }
+    }
+  }
+}

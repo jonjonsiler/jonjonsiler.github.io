@@ -1,0 +1,226 @@
+@use "@styles/variables" as *;
+
+@property --percent-value {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@mixin set-solid-box-shadow-color($type) {
+  @if $type == 'red' {
+    box-shadow: 0px -0.5rem 0px 0px $data-vis-red;
+  } @else if $type == 'yellow' {
+    box-shadow: 0px -0.5rem 0px 0px $data-vis-yellow;
+  } @else if $type == 'green' {
+    box-shadow: 0px -0.5rem 0px 0px $amira-green;
+  } @else if $type == 'gray' {
+    box-shadow: 0px -0.5rem 0px 0px $greystone-400b;
+  } @else if $type == 'same-day' {
+    box-shadow: 0px -0.5rem 0px 0px $amira-purple;
+  } @else {
+    box-shadow: none;
+  }
+}
+
+
+@keyframes percent-fill-bar-incipient {
+  0% {
+    background-color: $amira-purple;
+  }
+  100% {
+    background-color: $amira-purple;
+  }
+}
+
+@keyframes percent-fill-bar-developing {
+  0% {
+    background-color: $amira-purple;
+  }
+  100% {
+    background-color: $amira-purple;
+  }
+}
+
+@keyframes percent-fill-bar-mastered {
+  0% {
+    background-color: $amira-purple;
+  }
+  100% {
+    background-color: $amira-purple;
+  }
+}
+
+
+.mini-lesson-card-wrapper {
+  margin-top: 2.25rem;
+  border-radius: 0.625rem;
+  box-shadow: none;
+  transition: box-shadow 1s;
+  transition: box-shadow 1s, margin 0.8s ease;
+  width: 8.625rem;
+  border:1px solid black;
+
+  &:before {
+    content: '';
+    border: none;
+    position: absolute;
+    transition: opacity 1s;
+    opacity: 0;
+    top: -2.125rem;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 0.815rem solid transparent;
+    border-right: 0.815rem solid transparent;
+    border-bottom: 1.625rem solid $amira-purple;
+    transform: rotate(180deg) translateX(50%);
+  }
+
+  &.percent-anim-done {
+    position: relative;
+    &.incipient {
+      @include set-solid-box-shadow-color('red');
+    }
+    &.developing {
+      @include set-solid-box-shadow-color('yellow');
+    }
+    &.mastered {
+      @include set-solid-box-shadow-color('green');
+    }
+    &.no-data {
+      @include set-solid-box-shadow-color('gray');
+    }
+
+    &.same-day {
+      // Remove color override - let mastery colors show through
+      //@include set-solid-box-shadow-color('same-day');
+      margin-top: -.1rem; 
+      transition: margin-top 0.8s ease;
+    }
+  }
+
+  .mini-lesson-card-container {
+    height: 11.25rem;
+    min-height: 11.25rem;
+    border-radius: 0.625rem;
+    border: 0.0625rem solid $border-grey;
+    cursor: default;
+    overflow: hidden;
+    box-shadow: none;
+    transition: box-shadow 1s;
+  }
+
+  .header {
+    background-color: $white;
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem;
+    color: $amira-charcoal;
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    img {
+      height: 1.25rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .calendar-icon{
+    margin-right: 4px;
+  }
+
+  .body {
+    background-color: $white;
+    padding: 0.5rem;
+
+    .unit-name,
+    .lesson-name {
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+    }
+
+    .unit-name {
+      white-space: nowrap;
+      background-color: $greystone-150;
+      border-radius: .25rem;
+      padding:.25rem 0.5rem;
+      font-size: 0.75rem;
+      width: 100%
+
+    }
+
+    .lesson-name {
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.625rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      white-space: normal;
+      line-height: 1.2;
+      height: 2.8rem;
+    }
+    
+    .percent-complete {
+      width: 100%;
+      overflow: hidden;
+      font-family: Roboto Condensed, sans-serif;
+
+      .percent-complete-text {
+        span:last-child {
+          font-weight: 700;
+          font-size: 0.75rem;
+          width: 100%;
+          text-align: right;
+          margin-right: 0.25rem;
+          transition: --percent-value 1s;
+          counter-reset: percent var(--percent-value);
+
+          &:after {
+            font-size: 0.75rem;
+            content: counter(percent) '%';
+          }
+        }
+
+        span:first-child {
+          font-weight: 400;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          white-space: nowrap;
+          
+          &.complete-text {
+            font-weight: 500;
+          }
+        }
+      }
+
+      .not-started {
+        text-align: left;
+        font-style: italic;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        color:#495665;
+        font-family: Roboto Condensed, sans-serif;
+      }
+
+      .percent-complete-bar {
+        width: 100%;
+        height: 0.5rem;
+        background-color: $greystone-250;
+        border-radius: 0.25rem;
+        overflow: hidden;
+        margin-top: .25rem;
+
+
+        .percent-complete-bar-fill {
+          transition: width 1s;
+          height: 100%;
+          animation-duration: 1s;
+          animation-timing-function: ease-in;
+          animation-fill-mode: forwards;
+          border-radius: 0 0.25rem 0.25rem 0;
+
+        }
+      }
+    }
+  }
+}

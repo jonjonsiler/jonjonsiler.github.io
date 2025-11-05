@@ -1,0 +1,85 @@
+/**
+ * NotchedContainer styles
+ *
+ * This component uses a layered approach with clip-path for the notched shape:
+ * 1. A black background layer for the border
+ * 2. A white content layer with proper inset for the content
+ * 3. Dedicated areas for title and collapsible content
+ *
+ * The animations use a combination of:
+ * - clip-path transitions for the container shape
+ * - transform and max-height transitions for the content collapse/expand
+ *
+ * Key animation considerations:
+ * - Using transform for performance and smooth collapse/expand
+ * - Coordinating clip-path and content animations
+ * - Handling overflow properly during transitions
+ */
+
+/* Main container */
+.notched-container {
+  position: relative;
+  transition: none; /* Let content handle the animation */
+  overflow: visible;
+  box-sizing: border-box;
+  &.widget {
+    height: 100%;
+  }
+}
+
+/* Shared clip-path transition for both layers */
+.notched-bg-layer,
+.notched-content-layer {
+  transition: clip-path 300ms cubic-bezier(0, 0.55, 0, 0.98);
+}
+
+/* Background border layer */
+.notched-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--black); /* Border color */
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 0;
+}
+
+/* Content layer (inner white area) */
+.notched-content-layer {
+  background: var(--white);
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 0;
+  height: 100%;
+}
+
+/* Title section styling */
+.notched-title {
+  z-index: 2;
+  pointer-events: auto; /* Enable clicks on title */
+  box-sizing: border-box;
+
+  /* Remove default focus outline and add custom focus style */
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* Title heading - reset default styles */
+  h3.title-content {
+    font-size: 1rem;
+  }
+}
+
+/* Content section styling */
+.notched-content {
+  max-height: 9999px; /* Large enough for any content */
+  pointer-events: auto;
+  /* Collapsed state */
+  &.collapsed {
+    max-height: 0; /* Fully collapsed */
+    transition-duration: 0.25s; /* Slightly faster than expand */
+  }
+}

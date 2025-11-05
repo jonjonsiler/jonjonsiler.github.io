@@ -1,0 +1,31 @@
+.curriculum-alignment {
+  display: flex;
+  min-height: 2rem;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 1rem;
+
+  h5 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    letter-spacing: 0.0625rem;
+    font-variant: all-small-caps;
+    font-weight: 400;
+    margin: 0;
+
+    span {
+      font-family: "Inter", sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      font-variant: normal;
+      letter-spacing: 0.0175rem;
+    }
+  }
+
+  &-brand {
+    display: inline-block;
+    margin: 0 0.5rem;
+  }
+}

@@ -2,7 +2,7 @@ import React from "react";
 import type { Decorator } from "@storybook/react";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import { createInstance, type Resource } from "i18next";
-import en from "../../src/i18n/en.json";
+import en from "../i18n/en.json";
 
 const resources: Resource = {
   en,

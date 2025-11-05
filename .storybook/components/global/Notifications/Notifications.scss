@@ -1,0 +1,30 @@
+.aec-notify-bottom-middle {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%); // Center horizontally
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: var(--zindex-toast);
+}
+
+.aec-notify-toast {
+    position: absolute !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.5s ease-out;
+    min-width: 15rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.aec-notify-toast-default-bg {
+    background: papayawhip;
+}
+
+.aec-notify-toast-primary,
+.aec-notify-toast-success,
+.aec-notify-toast-warning {
+    width: 33rem;
+}

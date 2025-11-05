@@ -1,0 +1,72 @@
+.student-not-reading-modal {
+  &__description {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  &__students-container {
+    padding-bottom: 1.5rem;
+  }
+
+  &__student-row {
+    border-top: 1px solid #f2e6f5;
+    border-bottom: 1px solid #f2e6f5;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__student-badge {
+    border: 1px solid #f2e6f5;
+    border-radius: 6.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem;
+    min-width: 11.9375rem;
+    background: white;
+  }
+
+  &__progress-link {
+    color: #80089d;
+    font-weight: 600;
+    line-height: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  &__arrow-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: #f2e6f5;
+    margin-bottom: 0.5rem;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  &__action-button {
+    color: #80089d;
+    font-weight: 600;
+    line-height: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+}

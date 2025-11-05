@@ -1,0 +1,30 @@
+export enum ActivityType {
+  ASSESSMENT = "assessment",
+  DYSLEXIA = "dyslexia",
+  LISTENING_COMPREHENSION = "listeningComprehension",
+  NWF = "nwf",
+  READING_COMPREHENSION = "readingComprehension",
+  SPELLING = "spelling",
+  TUTOR = "tutor",
+  VOCABULARY_SCREENER = "vocabularyScreener",
+  LETTER_NAMING_AND_SOUNDS = "letterNamingAndSounds",
+  AMIRA_SKILL = "amiraSkill",
+  AMIRA_STORY = "amiraStory",
+  MICRO_LESSON = "microLesson",
+  TEACHER_RESOURCES = "teacherResources",
+  ISTATION_LEGACY_ACTIVITY = "istationLegacyActivity",
+  GENERIC = "generic",
+  LETTER_NAME = "letterName",
+  LETTER_SOUND = "letterSound",
+  UP_AND_DOWN = "upAndDown",
+  BLENDING = "blending",
+  WIF = "wif",
+  VOCABULARY = "vocabulary",
+  ORF = "assessment",
+}
+
+export enum ActivityEntity {
+  INSTRUCTIONAL = "INSTRUCTIONAL",
+  ASSIGNMENT = "ASSIGNMENT",
+  TUTORING = "TUTORING",
+}

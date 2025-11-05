@@ -1,7 +1,8 @@
 @use "./variables" as *;
+@import "./bootstrap";
+@import './root';
 
-// Load the full Bootstrap stylesheet after the variable overrides above.
-@import "bootstrap/scss/bootstrap";
+@include bsBanner("");
 
 // Additional Storybook-only tweaks can live here.
 body {

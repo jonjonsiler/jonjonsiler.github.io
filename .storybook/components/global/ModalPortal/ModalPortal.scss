@@ -1,0 +1,33 @@
+.modal.fade {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.15s;
+  /* Ensure overlay covers viewport and stacks above backdrop */
+  position: fixed;
+  inset: 0;
+  z-index: var(--zindex-modal);
+
+  &.show {
+    opacity: 1;
+  }
+
+  .modal-header img {
+    max-width: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .modal-dialog.modal-fit-content {
+    max-width: fit-content;
+  }
+}
+
+/* Backdrop inside the portal, scoped to avoid global collisions */
+#modal-root > .modal-backdrop {
+  z-index: var(--zindex-modal-backdrop);
+  position: fixed;
+  inset: 0;
+}
+
+.modal-open {
+ overflow: hidden;
+}

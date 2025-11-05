@@ -1,0 +1,7 @@
+export enum Entity {
+  STUDENT = "STUDENT",
+  CLASS = "CLASS",
+  SCHOOL = "SCHOOL",
+  DISTRICT = "DISTRICT",
+  AMIRA_SYSTEM = "AMIRA_SYSTEM",
+}

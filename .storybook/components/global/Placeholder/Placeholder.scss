@@ -1,0 +1,63 @@
+@use "@styles/variables" as *;
+
+// For the <span class="placeholder-wrapper-span"><span class="placeholder-span"></span></span> 
+// structure of this component, the original Bootstrap .placeholder class was broken into two 
+// separate classes, one for the parent span and one for the child span
+
+.placeholder-wrapper-span {
+    //original Bootstrap .placeholder rules that need to be on the parent span
+    display: inline-block;
+    height: 1em; //used to be min-height but had to be changed so that the child span can be set to the correct height
+    vertical-align: middle;
+    border-radius: 0.3rem;
+    overflow: hidden;
+
+    // not handling button parents in this component right now
+    // &.btn::before {
+    //     display: inline-block;
+    //     content: "";
+    // }
+
+    //new custom style rules for <span><span> structure
+    position: relative;
+}
+
+.placeholder-span {
+    //original Bootstrap .placeholder rules that need to be on the child span
+    cursor: wait;
+    background-color: currentcolor;
+    opacity: $placeholder-opacity-max;
+
+    //new custom style rules for <span><span> structure
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+}
+
+// Animation (original Bootstrap style rules, only the .placeholder class name was changed to .placeholder-span)
+.placeholder-glow {
+    .placeholder-span {
+        animation: placeholder-glow 2s ease-in-out infinite;
+    }
+}
+
+@keyframes placeholder-glow {
+    50% {
+        opacity: $placeholder-opacity-min;
+    }
+}
+
+.placeholder-wave {
+    mask-image: linear-gradient(130deg, $black 55%, rgba(0, 0, 0, (1 - $placeholder-opacity-min)) 75%, $black 95%);
+    mask-size: 200% 100%;
+    animation: placeholder-wave 2s linear infinite;
+}
+
+@keyframes placeholder-wave {
+    100% {
+        mask-position: -200% 0%;
+    }
+}

@@ -1,0 +1,48 @@
+.widget-planner-body {
+  header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .widget-icon {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+  }
+
+  h4, h5 {
+    margin: 0;
+    line-height: 1.22;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  .alert {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    p{
+      font-size: 0.75rem;
+
+      ~ button {
+        flex: 0 1 auto;
+      }
+    }
+  }
+}
