@@ -23,6 +23,6 @@ export const getMondayFridayDates = (offset = 0, startDate?: Date) => {
     baseDate.add(offset, 'week');
   }
 
-  const monday = baseDate.startOf('day').startOf('isoWeek');
+  const monday = baseDate.startOf('isoWeek');
   return [monday.format('YYYY-MM-DD'), monday.clone().add(4, 'days').format('YYYY-MM-DD')];
 };
