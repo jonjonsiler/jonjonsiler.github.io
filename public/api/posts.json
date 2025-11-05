@@ -1,0 +1,20 @@
+[
+{
+    "id": "hello-world",
+    "title": "Hello, World!",
+    "date": "2025-10-06",
+    "summary": "My first post on this microblog.",
+    "contentText": "Welcome to my microblog! This is my first post.",
+    "contentHtml": "<p>Welcome to my microblog! This is my first post.</p>",
+    "tags": ["intro", "astro"]
+  },
+  {
+    "id": "next-steps",
+    "title": "Next Steps",
+    "date": "2025-10-07",
+    "summary": "Planning my next steps with Astro.",
+    "contentText": "Planning to wire up a few more components next.",
+    "contentHtml": "<p>Planning to wire up a few more components next.</p>",
+    "tags": ["devlog"]
+  }
+]

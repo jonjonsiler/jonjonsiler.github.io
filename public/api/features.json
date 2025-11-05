@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Project Management",
+        "subtitle": "Managing complex web projects with small frisky teams.",
+        "detail": "",
+        "image": "/images/pic01.jpg"
+    },
+    {
+        "title": "JavaScript",
+        "subtitle": "Been fiddlin' with JavaScript since ECMAScript v2",
+        "detail": "Using React, Vue, jQuery, and vanilla JS. A little AfterEffects expression script to keep it real. Even some Node.js on the side.",
+        "image": "/images/pic02.jpg"
+    },
+    {
+        "title": "PHP",
+        "subtitle":"OOPer and MVCer. Enjoy developing in CMS frameworks",
+		"detail": "Laravel is a king, I've also worked with WordPress, Drupal, and Joomla.",
+        "image":"/images/pic03.jpg"
+    },
+    {
+        "title": "CSS",
+        "subtitle": "Old school CSS lover, recovering table layout developer",
+        "detail": "",
+        "image": "/images/pic04.jpg"
+    },
+    {
+        "title": "Design",
+        "subtitle": "Design? Yeah, I've done some of that, too.",
+        "detail": "",
+        "image": "/images/pic05.jpg"
+    },
+    {
+        "title": "Other",
+        "subtitle": "Project planning, scoping, estimating and troubleshooting; if it's on the web I can probably figure it out.",
+        "detail": "",
+        "image": "/images/pic06.jpg"
+    }
+]
