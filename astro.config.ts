@@ -13,6 +13,21 @@ export default defineConfig({
       tailwindcss(),
       tsconfigPaths()
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+           // Suppress deprecation warnings from SCSS (dart-sass) for bootstrap dependency
+          silenceDeprecations: [
+            'import',
+            "global-builtin",
+            "color-functions",
+            "slash-div",
+            "elseif",
+            "new-global",
+          ],
+        }
+      }
+    }
   },
   integrations: [
     react(),
