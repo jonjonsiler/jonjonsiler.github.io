@@ -3,20 +3,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@enums": ["src/enums/index.ts", "src/enums"],
-      "@enums/*": ["src/enums/*"],
-      "@models": ["src/models/index.ts", "src/models"],
-      "@models/*": ["src/models/*"],
-      "@hooks": ["src/hooks/index.ts", "src/hooks"],
-      "@hooks/*": ["src/hooks/*"],
-      "@services": ["src/services/index.ts", "src/services"],
-      "@services/*": ["src/services/*"],
-      "@components": ["src/components", "src/components/index.ts"],
-      "@components/*": ["src/components/*"],
-      "@utilities": ["src/utilities/index.ts", "src/utilities"],
-      "@utilities/*": ["src/utilities/*"],
-      "@styles": ["src/styles"],
-      "@styles/*": ["src/styles/*"],
       "@/*": ["src/*"]
     },
     "jsx": "preserve",
