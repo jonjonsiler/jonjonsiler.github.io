@@ -1,4 +1,17 @@
+// IDE
 .vscode
+
+// Environments
+.env.*
+!.env.example
+
+// Node.js
 node_modules
+
+// Build
 .astro
 dist
+
+// OS
+.DS_Store
+._*
