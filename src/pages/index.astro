@@ -2,7 +2,8 @@
 import HomePageLayout from '@layouts/home.astro';
 import { Tiles } from '@components/tiles';
 
-const response = await fetch('/api/features.json');
+const apiURL = import.meta.env.API_BASE_URL;
+const response = await fetch(`${apiURL}/api/features.json`);
 const features = await response.json() as Array<{
   title: string;
   subtitle: string;

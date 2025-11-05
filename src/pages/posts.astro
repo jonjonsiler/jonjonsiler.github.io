@@ -1,8 +1,11 @@
 ---
 import GenericPageLayout from '@layouts/generic.astro';
-import Post from '@components/post.tsx';
+import type { Post as TPost} from '@components/post'; 
+import Post from '@components/post';
 
-import posts from "../../public/api/posts.json";
+const apiURL = import.meta.env.API_BASE_URL;
+const response = await fetch(`${apiURL}/api/posts.json`);
+const posts = await response.json() as TPost[];
 ---
 <GenericPageLayout title="Blog Posts">
   <main id="main" class="page">
