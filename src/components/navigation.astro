@@ -1,14 +1,39 @@
-<nav id="menu">
-    <ul class="links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/landing">Landing</a></li>
-        <li><a href="/generic">Generic</a></li>
-        <li><a href="/elements">Elements</a></li>
-    </ul>
-<!--
-    <ul class="actions vertical">
-        <li><a href="#" class="button special fit">Get Started</a></li>
-        <li><a href="#" class="button fit">Log In</a></li>
-    </ul>
--->
+---
+export const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/landing', label: 'Landing' },
+  { href: '/generic', label: 'Generic' },
+  { href: '/elements', label: 'Elements' },
+  { href: '/posts', label: 'Posts' },
+  { href: '/about', label: 'About' },
+];
+
+interface Props {
+  orientation?: 'horizontal' | 'vertical';
+  size?: 'md' | 'sm';
+  class?: string;
+}
+
+const {
+  orientation = 'horizontal',
+  size = 'md',
+  class: className = '',
+} = Astro.props as Props;
+
+const layout =
+  orientation === 'horizontal'
+    ? 'flex items-center gap-6'
+    : 'flex flex-col items-start gap-3';
+
+const linkSize = size === 'md' ? 'text-xs md:text-sm' : 'text-[0.7rem]';
+---
+<nav class={`${layout} ${className}`}>
+  {navLinks.map(({ href, label }) => (
+    <a
+      href={href}
+      class={`font-semibold uppercase tracking-[0.25em] text-slate-200 transition-colors hover:text-sky-300 ${linkSize}`}
+    >
+      {label}
+    </a>
+  ))}
 </nav>

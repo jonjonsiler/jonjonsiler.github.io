@@ -1,19 +1,50 @@
 ---
 import GenericPageLayout from '@layouts/generic.astro';
-import type { Post as TPost} from '@components/post'; 
+import type { PostItem} from '@/models'; 
 import Post from '@components/post';
 
 const apiURL = import.meta.env.API_BASE_URL;
-const response = await fetch(`${apiURL}/api/posts.json`);
-const posts = await response.json() as TPost[];
+let posts: PostItem[] = [];
+
+if (apiURL) {
+  try {
+    const response = await fetch(`${apiURL}/api/posts.json`);
+    if (response.ok) {
+      const data = await response.json() as PostItem[];
+      if (Array.isArray(data)) {
+        posts = data;
+      }
+    }
+  } catch (error) {
+    console.warn('Failed to load posts, skipping remote content.', error);
+  }
+}
 ---
 <GenericPageLayout title="Blog Posts">
-  <main id="main" class="page">
-    <section class="container">
-      <h1 class="text-3xl font-bold mb-8 text-center">Microjournal</h1>
-      {posts.map((post) => (
-        <Post post={post} client:load />
-      ))}
-    </section>
+  <main>
+    <div class="section-shell space-y-10">
+      <header class="space-y-3 text-center md:text-left">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-sky-300">
+          Microjournal
+        </p>
+        <h1 class="text-4xl font-semibold tracking-tight text-white md:text-5xl">
+          Notes from the trenches
+        </h1>
+        <p class="mx-auto max-w-3xl text-sm text-slate-300 md:mx-0 md:text-base">
+          Occasional snapshots of the work, technology, and teams that keep me tinkering.
+        </p>
+      </header>
+      {posts.length ? (
+        <div class="grid gap-6">
+          {posts.map((post) => (
+            <Post post={post} client:load />
+          ))}
+        </div>
+      ) : (
+        <div class="surface-card space-y-4 rounded-3xl border border-slate-800/70 p-8 text-center text-sm text-slate-300 md:p-12">
+          <p>Fresh posts are in the works. Check back soon or reach out directly if you’d like to chat.</p>
+        </div>
+      )}
+    </div>
   </main>
 </GenericPageLayout>

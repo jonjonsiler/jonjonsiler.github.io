@@ -1,100 +1,116 @@
 ---
 import GenericPageLayout from '@layouts/generic.astro';
+
+const spotlights = [
+  {
+    title: 'Orci maecenas',
+    copy: 'Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor.',
+    image: '/images/pic08.jpg',
+  },
+  {
+    title: 'Rhoncus magna',
+    copy: 'Vivamus et sagittis magna sed nunc rhoncus condimentum sem. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt.',
+    image: '/images/pic09.jpg',
+  },
+  {
+    title: 'Sed nunc ligula',
+    copy: 'Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Vivamus et sagittis tempus.',
+    image: '/images/pic10.jpg',
+  },
+];
 ---
 <GenericPageLayout title="Generic landing page layout">
-    <!-- Note: The "styleN" class below should match that of the header element. -->
-    <section id="banner" class="style2">
-        <div class="inner">
-            <span class="image">
-                <img src="images/pic07.jpg" alt="" />
-            </span>
-            <header class="major">
-                <h1>Landing</h1>
-            </header>
-            <div class="content">
-                <p>Lorem ipsum dolor sit amet nullam consequat<br />
-                sed veroeros. tempus adipiscing nulla.</p>
-            </div>
+  <main class="space-y-24 pb-24">
+    <section class="relative isolate overflow-hidden">
+      <img
+        src="/images/pic07.jpg"
+        alt="Abstract gradient background"
+        loading="lazy"
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 -z-10 bg-slate-950/70 backdrop-blur-sm" />
+      <div class="mx-auto flex min-h-[60vh] w-full max-w-6xl flex-col justify-center gap-8 px-6 py-24 text-center md:px-10 lg:px-12 md:text-left">
+        <div class="space-y-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-sky-300">
+            Strategic landing experiences
+          </p>
+          <h1 class="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+            Pair clarity with confident execution.
+          </h1>
         </div>
+        <p class="max-w-2xl text-sm text-slate-300 md:text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed veroeros tempus adipiscing nulla aenean, eget auctor nunc placerat orci commodo.
+        </p>
+        <div class="flex flex-wrap items-center justify-start gap-3">
+          <a href="/generic" class="btn btn-primary">
+            Start a project
+          </a>
+          <a href="/elements" class="btn btn-muted">
+            Explore capabilities
+          </a>
+        </div>
+      </div>
     </section>
 
-				<!-- Main -->
-    <main id="main">
+    <section class="section-shell space-y-12">
+      <div class="space-y-4 text-center md:text-left">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-sky-300">
+          Why it works
+        </p>
+        <h2 class="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          Story-driven experiences that convert
+        </h2>
+        <p class="max-w-3xl text-sm text-slate-300 md:text-base">
+          Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor.
+        </p>
+      </div>
+      <div class="grid gap-8 lg:grid-cols-3">
+        {spotlights.map(({ title, copy, image }) => (
+          <article class="surface-card overflow-hidden">
+            <img
+              src={image}
+              alt={title}
+              loading="lazy"
+              class="h-48 w-full object-cover"
+            />
+            <div class="space-y-4 p-6">
+              <h3 class="text-2xl font-semibold tracking-tight text-white">
+                {title}
+              </h3>
+              <p class="text-sm text-slate-300">
+                {copy}
+              </p>
+              <a href="/generic" class="btn btn-muted">
+                Learn more
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
 
-        <!-- One -->
-            <section id="one">
-                <div class="inner">
-                    <header class="major">
-                        <h2>Sed amet aliquam</h2>
-                    </header>
-                    <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna.</p>
-                </div>
-            </section>
-
-        <!-- Two -->
-            <section id="two" class="spotlights">
-                <section>
-                    <a href="generic.html" class="image">
-                        <img src="images/pic08.jpg" alt="" data-position="center center" />
-                    </a>
-                    <div class="content">
-                        <div class="inner">
-                            <header class="major">
-                                <h3>Orci maecenas</h3>
-                            </header>
-                            <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-                            <ul class="actions">
-                                <li><a href="generic.html" class="button">Learn more</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <a href="generic.html" class="image">
-                        <img src="images/pic09.jpg" alt="" data-position="top center" />
-                    </a>
-                    <div class="content">
-                        <div class="inner">
-                            <header class="major">
-                                <h3>Rhoncus magna</h3>
-                            </header>
-                            <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-                            <ul class="actions">
-                                <li><a href="generic.html" class="button">Learn more</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <a href="generic.html" class="image">
-                        <img src="images/pic10.jpg" alt="" data-position="25% 25%" />
-                    </a>
-                    <div class="content">
-                        <div class="inner">
-                            <header class="major">
-                                <h3>Sed nunc ligula</h3>
-                            </header>
-                            <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-                            <ul class="actions">
-                                <li><a href="generic.html" class="button">Learn more</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-            </section>
-
-        <!-- Three -->
-            <section id="three">
-                <div class="inner">
-                    <header class="major">
-                        <h2>Massa libero</h2>
-                    </header>
-                    <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
-                    <ul class="actions">
-                        <li><a href="generic.html" class="button next">Get Started</a></li>
-                    </ul>
-                </div>
-            </section>
-
-    </main>
+    <section class="section-shell">
+      <div class="surface-card flex flex-col gap-8 p-10 text-center md:p-16 md:text-left">
+        <div class="space-y-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-sky-300">
+            Make the jump
+          </p>
+          <h2 class="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+            Launch a landing page that scales with the story you need to tell.
+          </h2>
+          <p class="max-w-3xl text-sm text-slate-300 md:text-base">
+            Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-3 md:justify-start">
+          <a href="/generic" class="btn btn-primary">
+            Get started
+          </a>
+          <a href="/posts" class="btn btn-muted">
+            View case studies
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 </GenericPageLayout>
