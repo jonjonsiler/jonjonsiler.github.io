@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@import "./tailwind";
+
+@import "./twilight-skeptic";
+
+.bg-twilight-skeptic {
+    background-color: var(--aec-twilight-skeptic-bg-color);
+    background-image: var(--aec-twilight-skeptic-bg-img);
+}
+
+.bg-personal {
+    --personal-hero-overlay: linear-gradient(115deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.9) 45%, rgba(4, 47, 73, 0.7) 70%, rgba(6, 78, 59, 0.45) 100%);
+    --personal-hero-photo-dimmer: linear-gradient(rgba(2, 6, 23, 0.2), rgba(2, 6, 23, 0.2));
+    background-color: #020617;
+    background-image: var(--personal-hero-overlay), var(--personal-hero-photo-dimmer), url("/images/image.png"), var(--aec-twilight-skeptic-bg-img);
+    background-position: center, center, left center, 10% 10%, 90% 10%, 10% 90%, 90% 90%;
+    background-size: cover, cover, clamp(240px, 28vw, 420px) auto, auto, auto, auto, auto;
+    background-repeat: no-repeat;
+    background-blend-mode: soft-light, normal, normal, normal, normal, normal, normal;
+    background-attachment: scroll;
+    /* min-height: 100vh; */
+}

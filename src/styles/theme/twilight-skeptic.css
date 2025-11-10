@@ -1,0 +1,15 @@
+:root {
+    --aec-twilight-skeptic-bg-color: var(--white);
+    --aec-twilight-skeptic-bg-opacity: 20%;
+    --aec-twilight-skeptic-bg-pointAB-color: rgba(245, 241, 233, var(--aec-twilight-skeptic-bg-opacity));
+    --aec-twilight-skeptic-bg-pointC-color: rgba(128, 8, 157, var(--aec-twilight-skeptic-bg-opacity));
+    --aec-twilight-skeptic-bg-pointD-color: rgba(0, 202, 114, var(--aec-twilight-skeptic-bg-opacity));
+    --aec-twilight-skeptic-bg-pointA: radial-gradient(circle at 10% 10%, var(--aec-twilight-skeptic-bg-pointAB-color) 0%, transparent 50%);
+    --aec-twilight-skeptic-bg-pointB: radial-gradient(circle at 90% 10%, var(--aec-twilight-skeptic-bg-pointAB-color) 0%, transparent 50%);
+    --aec-twilight-skeptic-bg-pointC: radial-gradient(circle at 10% 90%, var(--aec-twilight-skeptic-bg-pointC-color) 0%, transparent 50%);
+    --aec-twilight-skeptic-bg-pointD: radial-gradient(circle at 90% 90%, var(--aec-twilight-skeptic-bg-pointD-color) 0%, transparent 50%);
+    --aec-twilight-skeptic-bg-img: var(--aec-twilight-skeptic-bg-pointA),
+    var(--aec-twilight-skeptic-bg-pointB),
+    var(--aec-twilight-skeptic-bg-pointC),
+    var(--aec-twilight-skeptic-bg-pointD);
+}
