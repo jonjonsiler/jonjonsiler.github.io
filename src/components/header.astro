@@ -1,39 +1,25 @@
 ---
-import NavigationMenu from '@components/navigation.astro';
 ---
-<header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/80 backdrop-blur">
-  <div class="mx-auto flex w-full items-center px-6 py-4">
-    <details class="relative me-2" data-mobile-nav>
-      <summary class="btn btn-muted btn-sm h-10 w-10 items-center justify-center rounded-2xl border border-sky-400/40  bg-sky-400/20 shadow-inner shadow-sky-500/30 group-hover:border-sky-300/80 group-hover:bg-sky-300/25 transition">
-        <i class="flextext-sm font-semibold text-sky-200">JS</i>
-      </summary>
-      <div class="absolute left-0 mt-4 w-56 space-y-4border border-slate-800/80 bg-slate-950/95 p-5 shadow-2xl shadow-slate-950/40">
-        <NavigationMenu orientation="vertical" size="sm" class="w-full gap-3 text-left" />
-      </div>
-    </details>
-    <a
-      href="/"
-      class="group flex items-baseline gap-4 text-left transition no-underline hover:underline"
-    >
-        <h1 class="font-display text-lg font-semibold leading-tight tracking-tight text-slate-50">
-          Jonathan Siler
-        </h1>
-        <h2 class="text-[0.65rem]/[1] font-medium uppercase tracking-[0.35em] text-slate-400">
-          Web Technology Zen Master
-        </h2>
-    </a>
-  </div>
+<header class="sticky top-0 z-50 mx-auto flex w-full items-center pr-6 pl-3 py-4 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+  <button
+    type="button"
+    class="btn btn-muted btn-sm z-40 flex h-11 w-11 mr-3 items-center justify-center rounded-2xl border border-sky-400/40 bg-sky-400/20 shadow-inner shadow-sky-500/30 transition hover:border-sky-300/80 hover:bg-sky-300/25"
+    data-nav-toggle
+    aria-controls="primary-navigation"
+    aria-expanded="true"
+  >
+    <span class="sr-only">Toggle navigation rail</span>
+    <i class="text-sm font-semibold text-sky-200">JS</i>
+  </button>
+  <a
+    href="/"
+    class="group flex items-baseline gap-4 text-left transition no-underline hover:underline"
+  >
+    <h1 class="font-display text-lg font-semibold leading-tight tracking-tight text-slate-50">
+      Jonathan Siler
+    </h1>
+    <h2 class="text-[0.65rem]/[1] font-medium uppercase tracking-[0.35em] text-slate-400">
+      Web Technology Zen Master
+    </h2>
+  </a>
 </header>
-<script is:inline>
-  if (typeof window !== 'undefined') {
-    const nav = document.querySelector('[data-mobile-nav]');
-    if (nav) {
-      nav.addEventListener('click', (event) => {
-        const link = event.target instanceof Element ? event.target.closest('a') : null;
-        if (link) {
-          nav.removeAttribute('open');
-        }
-      });
-    }
-  }
-</script>

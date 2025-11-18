@@ -1,39 +1,40 @@
 ---
-export const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/landing', label: 'Landing' },
-  { href: '/generic', label: 'Generic' },
-  { href: '/elements', label: 'Elements' },
-  { href: '/posts', label: 'Posts' },
-  { href: '/about', label: 'About' },
-];
+import { navLinks } from '@/data/links';
 
 interface Props {
   orientation?: 'horizontal' | 'vertical';
   size?: 'md' | 'sm';
+  variant?: 'default' | 'sidebar';
   class?: string;
 }
 
 const {
-  orientation = 'horizontal',
   size = 'md',
+  variant = 'default',
   class: className = '',
 } = Astro.props as Props;
 
-const layout =
-  orientation === 'horizontal'
-    ? 'flex items-center gap-6'
-    : 'flex flex-col items-start gap-3';
-
 const linkSize = size === 'md' ? 'text-xs md:text-sm' : 'text-[0.7rem]';
+const sidebarLink =
+  'group/sidebar-link flex w-full items-center gap-3 rounded-2xl text-sm font-semibold tracking-tight text-slate-200 transition hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400';
+const defaultLink =
+  'font-semibold uppercase tracking-[0.25em] text-slate-200 transition-colors hover:text-sky-300';
 ---
-<nav class={`${layout} ${className}`}>
-  {navLinks.map(({ href, label }) => (
+<nav class={`flex w-full flex-col ${className}`}>
+  {navLinks.map(({ href, label, icon: Icon }) => (
     <a
       href={href}
-      class={`font-semibold uppercase tracking-[0.25em] text-slate-200 transition-colors hover:text-sky-300 ${linkSize}`}
+      class={`${variant === 'sidebar' ? sidebarLink : defaultLink} ${variant !== 'sidebar' ? linkSize : ''}`}
+      aria-label={variant === 'sidebar' ? label : undefined}
+      data-sidebar-link={variant === 'sidebar' ? true : undefined}
     >
-      {label}
+      <Icon className="text-xl text-slate-400 transition group-hover/sidebar-link:text-sky-300" aria-hidden="true" />
+      <span
+        class="sidebar-label min-w-0 overflow-hidden text-sm font-semibold tracking-wide text-slate-50 transition-[margin,width,opacity] duration-200"
+        data-sidebar-label
+      >
+        {label}
+      </span>
     </a>
   ))}
 </nav>

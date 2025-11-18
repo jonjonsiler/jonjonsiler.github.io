@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
 
 @theme {
   --spacing: 0.25rem;
@@ -24,6 +25,27 @@
       linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.98));
     background-attachment: fixed;
     min-height: 100vh;
+    --shell-sidebar-collapsed-width: 4.5rem;
+    --shell-sidebar-expanded-width: clamp(14rem, 21vw, 18rem);
+    --shell-sidebar-width: var(--shell-sidebar-expanded-width);
+    --shell-content-offset: var(--shell-sidebar-expanded-width);
+    --shell-transition-speed: 250ms;
+  }
+
+  body[data-nav-state='closed'] {
+    --shell-sidebar-width: var(--shell-sidebar-collapsed-width);
+    --shell-content-offset: var(--shell-sidebar-collapsed-width);
+  }
+
+  @media (max-width: 767px) {
+    body {
+      --shell-sidebar-width: var(--shell-sidebar-collapsed-width);
+      --shell-content-offset: var(--shell-sidebar-collapsed-width);
+    }
+
+    body[data-nav-state='open'] {
+      --shell-sidebar-width: min(85vw, var(--shell-sidebar-expanded-width));
+    }
   }
 
   a {
@@ -66,6 +88,36 @@
   ::selection {
     background-color: rgba(56, 189, 248, 0.35);
     color: rgb(15, 23, 42);
+  }
+
+  [data-shell-sidebar] {
+    width: var(--shell-sidebar-width);
+    max-width: var(--shell-sidebar-width);
+    transition: width var(--shell-transition-speed) ease, box-shadow var(--shell-transition-speed) ease;
+  }
+
+  [data-shell-content] {
+    margin-left: var(--shell-content-offset);
+    transition: margin-left var(--shell-transition-speed) ease;
+  }
+
+  [data-sidebar-label] {
+    display: block;
+    width: auto;
+    white-space: nowrap;
+  }
+
+  body[data-nav-state='closed'] [data-sidebar-label] {
+    display: none;
+    width: 0;
+    margin-left: 0;
+  }
+
+  body[data-nav-state='closed'] [data-sidebar-link] {
+    gap: 0;
+    justify-content: center;
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
   }
 }
 

@@ -1,10 +1,10 @@
 ---
 import HeadBase from '@partials/head-base.astro';
 import Header from '@components/header.astro';
+import NavigationMenu from '@components/navigation.astro';
 import Footer from '@components/footer.astro';
 import classNames from 'classnames';
 
-//import '/src/styles/theme/main.scss';
 import '/src/styles/theme/global.css';
 
 const { title, extendClass } = Astro.props;
@@ -21,12 +21,27 @@ const containerClass = classNames(
 		<slot name="head" />
 	</head>
 	<body class="bg-slate-950 text-slate-100">
-    <div class="relative flex min-h-screen flex-col">
-      <Header />
-      <main id="main" class={containerClass} >
-        <slot />
-      </main>
-      <Footer />
+    <div class="relative flex min-h-screen bg-slate-950 text-slate-100">
+      <aside
+        class="relative z-40 flex w-0 shrink-0 md:w-auto pt-4"
+        data-shell-sidebar
+      >
+        <slot name="sidebar">
+          <NavigationMenu
+            orientation="vertical"
+            size="sm"
+            variant="sidebar"
+            class="w-full gap-1 text-left"
+          />
+        </slot>
+      </aside>
+      <div class="flex min-h-screen flex-1 flex-col">
+        <Header />
+        <main id="main" class={containerClass}>
+          <slot />
+        </main>
+        <Footer />
+      </div>
     </div>
 	</body>
 </html>
