@@ -1,0 +1,55 @@
+import type { PostItem } from "@/models";
+
+type PostConfig = Omit<PostItem, "contentHtml"> & {
+  contentFile: URL;
+};
+// remove: import { readFile } from "node:fs/promises";
+
+const postContent = import.meta.glob<{ default: string }>("./*.html", {
+  as: "raw",
+  eager: true,
+});
+
+const postsConfig: PostConfig[] = [
+  {
+    id: "resizing-an-iframe-using-postmessage",
+    title: "Resizing an iframe using postMessage",
+    date: "2014-04-17",
+    summary:
+      "How to keep an embedded iframe height in sync with its parent page by exchanging messages between the host and the child document.",
+    contentText:
+      "Cross-domain iframe resizing trick that wires a postMessage listener on the host page with a height publisher inside the embedded content.",
+    contentFile: new URL("./resizing-an-iframe-using-postmessage.html", import.meta.url),
+  },
+  {
+    id: "making-sense-of-deferred-as-a-promise",
+    title: "Making sense of $.Deferred as a Promise",
+    date: "2015-03-09",
+    summary:
+      "Reconciling jQuery's $.Deferred object with the Promise mental model by looking at producer, forwarder, and receiver use cases.",
+    contentText:
+      "Breakdown of how jQuery implements Promises/A via $.Deferred, with examples that show when to create, forward, or simply consume the promise.",
+    contentFile: new URL("./making-sense-of-deferred-as-a-promise.html", import.meta.url),
+  },
+  {
+    id: "setting-up-a-chrome-os-virtual-machine-in-virtualbox",
+    title: "Setting up a Chrome OS VM in VirtualBox",
+    date: "2017-08-12",
+    summary:
+      "It's really easy to setup a virtual machine instance of ChromeOS for testing and configuration before making the financial commitment (albeit small) to a cutting edge Chromebook.",
+    contentText:
+      "Step-by-step walkthrough for creating a Chrome OS (CloudReady) virtual machine in VirtualBox, from recovery media to boot settings.",
+    contentFile: new URL("./setting-up-a-chrome-os-virtual-machine-in-virtualbox.html", import.meta.url),
+  },
+];
+
+export async function loadPosts(): Promise<PostItem[]> {
+  return postsConfig.map(({ contentFile: _, id, ...post }) => {
+    const contentModule = postContent[`./${id}.html`];
+    if (!contentModule) {
+      throw new Error(`Missing content file for post "${id}"`);
+    }
+    const contentHtml = contentModule.default;
+    return { ...post, id, contentHtml };
+  });
+}

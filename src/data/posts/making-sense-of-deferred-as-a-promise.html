@@ -1,0 +1,51 @@
+<p>jQuery's <code>$.Deferred</code> object often gets dismissed because it doesn't mirror the modern Promise API exactly, yet it still implements the CommonJS Promises/A spec and can be a useful primitive when you understand the producer/consumer split.</p>
+<p>PromiseJS famously warns that “what jQuery calls a promise is totally different,” which is true in terms of ergonomics but not necessarily in terms of capability. jQuery's own docs can also be dense, focusing on <code>deferred.then()</code>, <code>deferred.done()</code>, and <code>deferred.fail()</code> without clearly explaining how resolve/reject fit into the bigger picture.</p>
+<p>The clearest framing came from an old StackOverflow answer that breaks the mental model down into two parts:</p>
+<blockquote>
+  <p>A deferred object can create a promise and change its state. You use it when you produce a value. A promise is the read-only side that receives the future value—you cannot modify its state.</p>
+</blockquote>
+
+<h2>Producer model</h2>
+<p>You create a deferred when your own function needs to expose asynchronous work as a promise.</p>
+
+<pre>
+  <code class="language-javascript">
+function callMe() {
+  var deferred = new $.Deferred();
+  setTimeout(function () {
+    deferred.resolve("some_value_compute_asynchronously");
+  }, 1000);
+  return deferred.promise();
+}
+
+callMe().done(function (value) {
+  alert(value);
+});
+  </code>
+</pre>
+
+<h2>Forward model</h2>
+<p>If the function you call already returns a promise, simply return that promise without introducing another deferred.</p>
+<pre>
+  <code class="language-javascript">
+function fetchData() {
+  // configure $.ajax and return the promise it gives you
+  return $.ajax({ /* ... */ });
+}
+
+fetchData().done(function (response) {
+  // handle the server response
+});
+  </code>
+</pre>
+
+<h2>Receiver / chaining model</h2>
+<p>When you merely react to a promise (the consumer side), you chain handlers without touching the deferred at all.</p>
+<pre>
+  <code class="language-javascript">
+$("#my_element").fadeOut().promise().done(function () {
+  console.log("Animation finished");
+});
+  </code>
+</pre>
+<p>The takeaway: jQuery's promises are not identical to the native Promise implementation, but they still give you a clear producer/consumer contract. For most legacy jQuery apps that already ship the library, leaning on <code>$.Deferred</code> avoids the overhead of introducing another Promise polyfill while still delivering predictable async flows.</p>
