@@ -115,27 +115,27 @@
     &-offline {
       background-color: white;
       &::before {
-        background-image: url(./../../../images/icons/status-offline.svg);
+        background-image: url(images/icons/status-offline.svg);
         background-size: 1.25rem 1.25rem;
       }
     }
     &-warning {
       background-color: var(--amira-brand-warn-field);
       &::before {
-        background-image: url(./../../../images/icons/status-warn.svg);
+        background-image: url(images/icons/status-warn.svg);
         background-size: 0.375rem 1.125rem;
       }
     }
     &-danger {
       background-color: var(--amira-brand-danger-field);
       &::before {
-        background-image: url(./../../../images/icons/status-danger.svg);
+        background-image: url(images/icons/status-danger.svg);
       }
     }
     &-success {
       background-color: var(--amira-brand-success-field);
       &::before {
-        background-image: url(./../../../images/icons/status-success.svg);
+        background-image: url(images/icons/status-success.svg);
       }
     }
   }
