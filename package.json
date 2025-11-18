@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run storybook:build",
     "preview": "astro preview",
     "typecheck": "astro check",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build --output-dir dist/storybook"
   },
   "repository": {
     "type": "git",
