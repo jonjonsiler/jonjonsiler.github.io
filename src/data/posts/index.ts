@@ -4,8 +4,9 @@ type PostConfig = Omit<PostItem, "contentHtml"> & {
   contentFile: URL;
 };
 
-const postContent = import.meta.glob<{ default: string }>("./*.html", {
-  as: "raw",
+const postContent = import.meta.glob<string>("./*.html", {
+  query: "?raw",
+  import: "default",
   eager: true,
 });
 
@@ -44,11 +45,10 @@ const postsConfig: PostConfig[] = [
 
 export async function loadPosts(): Promise<PostItem[]> {
   return postsConfig.map(({ contentFile: _, id, ...post }) => {
-    const contentModule = postContent[`./${id}.html`];
-    if (!contentModule) {
+    const contentHtml = postContent[`./${id}.html`];
+    if (!contentHtml) {
       throw new Error(`Missing content file for post "${id}"`);
     }
-    const contentHtml = contentModule.default;
     return { ...post, id, contentHtml };
   });
 }
