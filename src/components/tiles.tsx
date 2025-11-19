@@ -1,29 +1,109 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import classNames from 'classnames';
 import type { TileBlockProps } from '@/models';
 
-export const Tile: React.FC<TileBlockProps> = ({
+type TileProps = TileBlockProps & {
+  column?: 'left' | 'right';
+  containerRef?: React.RefObject<HTMLDivElement | null>;
+};
+
+const HUE_OFFSET = -134;
+
+export const Tile: React.FC<TileProps> = ({
   image,
   title,
   subtitle,
-  detail
+  detail,
+  column = 'left',
+  containerRef
 }) => {
   const [open, setOpen] = useState(false);
+  const [hoverBox, setHoverBox] = useState<{ leftOffset: number; width: number }>({
+    leftOffset: 0,
+    width: 0
+  });
+  const articleRef = useRef<HTMLElement>(null);
+  const gradientColors = useMemo(() => {
+    const baseHue = Math.random() * 360;
+    const pairedHue = (baseHue + HUE_OFFSET + 360) % 360;
+    const format = (
+      hue: number,
+      alpha: number,
+      lightness = 55,
+      saturation = 78
+    ) => `hsla(${hue.toFixed(1)}, ${saturation}%, ${lightness}%, ${alpha})`;
+
+    return {
+      start: format(baseHue, 0.15, 60),
+      glow: format(baseHue, 0.12, 66),
+      end: format(pairedHue, 0.1, 54),
+      fade: format(pairedHue, 0, 48)
+    };
+  }, []);
+
   const handleToggle = useCallback(() => {
     setOpen(o => !o);
   }, []);
+
+  const updateHoverBox = useCallback(() => {
+    if (!articleRef.current) {
+      return;
+    }
+    const articleRect = articleRef.current.getBoundingClientRect();
+    const mainElement = articleRef.current.closest('main');
+    const mainRect = mainElement?.getBoundingClientRect();
+    const containerRect = containerRef?.current?.getBoundingClientRect();
+    const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : articleRect.right;
+    const isTwoColumn = typeof window !== 'undefined'
+      ? window.matchMedia('(min-width: 768px)').matches
+      : false;
+
+    let start = articleRect.left;
+    let width = articleRect.width;
+
+    if (mainRect && isTwoColumn) {
+      const halfWidth = mainRect.width / 2;
+      start = column === 'left'
+        ? mainRect.left
+        : mainRect.left + halfWidth;
+      width = halfWidth;
+    } else if (column === 'left') {
+      const containerStart = containerRect?.left ?? articleRect.left;
+      start = containerStart;
+      width = articleRect.right - containerStart;
+    } else {
+      start = articleRect.left;
+      width = viewportWidth - start;
+    }
+
+    setHoverBox({
+      leftOffset: start - articleRect.left,
+      width: Math.max(width, 0)
+    });
+  }, [column, containerRef]);
+
+  useEffect(() => {
+    updateHoverBox();
+  }, [updateHoverBox, open]);
+
+  useEffect(() => {
+    const handleResize = () => updateHoverBox();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [updateHoverBox]);
 
   const articleClasses = classNames([
       'surface-card',
       'group',
       'relative',
       'isolate',
-      'overflow-hidden',
+      'overflow-visible',
       'p-8',
       'transition-all',
       'duration-500',
       'hover:-translate-y-1',
-      'hover:border-sky-400/60',
       'hover:shadow-sky-500/20',
       'focus-within:border-sky-400/60',
       'focus-within:shadow-sky-500/20',
@@ -49,7 +129,28 @@ export const Tile: React.FC<TileBlockProps> = ({
 );
 
   return (
-    <article className={articleClasses}>
+    <article ref={articleRef} className={articleClasses}>
+      <span
+        aria-hidden="true"
+        className={classNames(
+          'pointer-events-none',
+          'block',
+          'absolute',
+          'top-0',
+          'bottom-0',
+          '-z-10',
+          'opacity-0',
+          'transition-opacity',
+          'duration-500',
+          'ease-out',
+          'group-hover:opacity-100',
+        )}
+        style={{
+          left: `${hoverBox.leftOffset}px`,
+          width: `${hoverBox.width}px`,
+          backgroundImage: `linear-gradient(${column === 'left' ? '90deg' : '270deg'}, ${gradientColors.start} 0%, ${gradientColors.glow} 40%, ${gradientColors.end} 75%, ${gradientColors.fade} 100%)`
+        }}
+      />
       {/* <div className="absolute inset-0 -z-10 overflow-hidden">
         <img
           src={image}
@@ -104,12 +205,21 @@ export const Tile: React.FC<TileBlockProps> = ({
 
 export const Tiles: React.FC<{
   features: Array<TileBlockProps>
-}> = ({ features }) => (
-  <div className="grid md:grid-cols-2">
-    {features.map((feature, i) => (
-      <Tile key={`tile-${i}`} {...feature} />
-    ))}
-  </div>
-);
+}> = ({ features }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div ref={containerRef} className="grid md:grid-cols-2">
+      {features.map((feature, i) => (
+        <Tile
+          key={`tile-${i}`}
+          column={i % 2 === 0 ? 'left' : 'right'}
+          containerRef={containerRef}
+          {...feature}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default Tiles;
