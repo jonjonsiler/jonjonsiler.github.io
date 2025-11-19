@@ -6,8 +6,9 @@ export default function Post({ post }: { post: PostProps }) {
     year: "numeric",
     month: "short",
     day: "numeric",
+    timeZone: "UTC",
   };
-  const formattedDate = new Date(post.date).toLocaleDateString(undefined, dateOptions);
+  const formattedDate = new Date(post.date).toLocaleDateString("en-US", dateOptions);
   const detailUrl = `/posts/${post.id}`;
 
   return (
