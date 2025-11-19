@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      PUBLIC_STORYBOOK_BASE_URL: ${{ secrets.PUBLIC_STORYBOOK_BASE_URL }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
