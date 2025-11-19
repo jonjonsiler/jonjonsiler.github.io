@@ -3,7 +3,6 @@ import type { PostItem } from "@/models";
 type PostConfig = Omit<PostItem, "contentHtml"> & {
   contentFile: URL;
 };
-// remove: import { readFile } from "node:fs/promises";
 
 const postContent = import.meta.glob<{ default: string }>("./*.html", {
   as: "raw",
