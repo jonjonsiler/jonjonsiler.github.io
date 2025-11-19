@@ -1,0 +1,17 @@
+---
+import NavigationMenu from '@components/navigation.astro';
+---
+<details
+  open
+  class="group/sidebar relative flex min-h-screen flex-col overflow-hidden border-r border-white/5 bg-slate-950/95 text-slate-200 shadow-inner shadow-black/40 transition-[width] duration-300 md:px-3 md:pb-4 md:pt-2"
+  data-shell-panel
+  aria-label="Site navigation"
+>
+
+  <NavigationMenu
+    orientation="vertical"
+    size="sm"
+    variant="sidebar"
+    class="w-full gap-1 text-left"
+  />
+</details>

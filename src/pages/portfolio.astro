@@ -1,0 +1,149 @@
+---
+import GenericPageLayout from '@layouts/generic.astro';
+
+type StorybookItem = {
+  title: string;
+  summary: string;
+  storyId: string;
+  badge: string;
+  height: number;
+  linkLabel?: string;
+};
+
+const normalizeBase = (value: string) => value.replace(/\/$/, '');
+const storybookBaseUrl = normalizeBase(
+  import.meta.env.PUBLIC_STORYBOOK_BASE_URL ?? 'https://jonjonsiler.github.io/storybook'
+);
+
+const storybookItems: StorybookItem[] = [
+  {
+    title: 'Weekly Plan Widget',
+    summary:
+      'A cross-section of the planning widget that keeps instructors aware of the plan status in every state from loading to fully ready.',
+    storyId: 'assignments-weekly-planner-widget-weekly-plan--ready-plan',
+    badge: 'Assignments',
+    height: 200,
+    linkLabel: 'Ready state',
+  },
+  // {
+  //   title: 'Assessment Status Monitor',
+  //   summary:
+  //     'Widget showing how assessment load, urgency, and completion signals influence the dashboard CTA hierarchy.',
+  //   storyId: 'dashboard-widgets-assessment-status--urgent-incomplete',
+  //   badge: 'Assessment',
+  //   height: 520,
+  //   linkLabel: 'Active + urgent',
+  // },
+  {
+    title: 'Planning Summary Snapshot',
+    summary:
+      'A compact roll-up of planning signals that gives coaches instant context on classroom readiness.',
+    storyId: 'dashboard-planningsummary--default',
+    badge: 'Dashboard',
+    height: 316,
+  },
+  {
+    title: 'Curriculum Alignment Feed',
+    summary:
+      'Shows how alignment artifacts adapt to each curriculum, highlighting the variations in resource emphasis.',
+    storyId: 'components-curriculum-alignment--all-of-them',
+    badge: 'Curriculum',
+    height: 350,
+  },
+  // {
+  //   title: 'Amira Message Center',
+  //   summary:
+  //     'Expandable messaging surface for student-specific nudges, tuned here to illustrate empty, single, and stacked alert states.',
+  //   storyId: 'components-global-amiramessage--default',
+  //   badge: 'Global UX',
+  //   height: 520,
+  // },
+  // {
+  //   title: 'Notification System',
+  //   summary:
+  //     'Toast primitives and helper API used throughout the platform, embedded here with live controls for success, warning, and custom emoji alerts.',
+  //   storyId: 'utils-notifications--make-toast',
+  //   badge: 'Utilities',
+  //   height: 460,
+  // },
+];
+
+const resolveIframeSrc = (storyId: string) =>
+  `${storybookBaseUrl}/iframe.html?id=${storyId}&viewMode=story`;
+const resolveStoryLink = (storyId: string) =>
+  `${storybookBaseUrl}/?path=/story/${storyId}`;
+---
+<GenericPageLayout title="Portfolio">
+  <main class="space-y-16 pb-24">
+    <section class="section-shell space-y-6 text-center md:text-left">
+      <header class="space-y-3">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-sky-300">
+          Product &amp; UI workbench
+        </p>
+        <h1 class="text-4xl font-semibold tracking-tight text-white md:text-5xl">
+          Portfolio experiments from the Storybook system
+        </h1>
+      </header>
+      <p class="mx-auto max-w-3xl text-sm text-slate-300 md:mx-0 md:text-base">
+        Each module below is rendered directly from the live Storybook instance so you can explore how the widgets behave in their natural environment—ready states, empty states, and loading skeletons included.
+      </p>
+      <p class="mx-auto max-w-3xl text-xs uppercase tracking-[0.4em] text-slate-400 md:mx-0">
+        Storybook origin:
+        <a
+          href={storybookBaseUrl}
+          class="ml-2 inline-flex items-center gap-1 text-sky-300 hover:text-sky-200"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {storybookBaseUrl.replace(/^https?:\/\//, '')}
+        </a>
+      </p>
+    </section>
+
+    <section class="section-shell grid gap-10">
+      {storybookItems.map((item) => (
+        <article class="surface-card space-y-6 rounded-[26px] border border-white/10 bg-slate-900/60 p-6 shadow-[0_20px_60px_rgba(2,6,23,0.55)]">
+          <header class="space-y-2">
+            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.45em] text-slate-400">
+              {item.badge}
+            </p>
+            <h2 class="text-2xl font-semibold tracking-tight text-white">
+              {item.title}
+            </h2>
+            <p class="text-sm text-slate-300">
+              {item.summary}
+            </p>
+          </header>
+          <div class="overflow-hidden rounded-2xl border border-slate-800/70 bg-slate-950">
+            <iframe
+              src={resolveIframeSrc(item.storyId)}
+              title={`${item.title} Storybook embed`}
+              loading="lazy"
+              allow="clipboard-write"
+              class="w-full"
+              style={`height:${item.height}px`}
+            />
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full border border-slate-700/70 px-3 py-1 tracking-[0.2em] text-[0.55rem] uppercase text-slate-300">
+                Live embed
+              </span>
+              <span class="rounded-full border border-slate-700/70 px-3 py-1 tracking-[0.2em] text-[0.55rem] uppercase text-slate-300">
+                Storybook
+              </span>
+            </div>
+            <a
+              href={resolveStoryLink(item.storyId)}
+              class="font-semibold uppercase tracking-[0.35em] text-sky-300 transition hover:text-sky-100"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {item.linkLabel ?? 'Open story'}
+            </a>
+          </div>
+        </article>
+      ))}
+    </section>
+  </main>
+</GenericPageLayout>

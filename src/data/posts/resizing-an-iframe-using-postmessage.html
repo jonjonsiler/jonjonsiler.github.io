@@ -1,0 +1,49 @@
+<p>Resizing an embedded iframe across domains comes down to sending the iframe height to the parent page and letting the host adjust the element dynamically. The pattern relies on <code>window.postMessage</code> so that the parent and child stay in sync without having to expose the embedded page.</p>
+
+<h2>Listener on the host page</h2>
+<p>The container page listens for messages that originate from the iframe and mutates the matching element's height whenever the payload changes.</p>
+<pre>
+  <code class="language-javascript">
+(function () {
+  var listenerMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var messageHandler = function (event) {
+    if (event.origin !== "http://www.checktheorigin.com") {
+      return;
+    }
+    if (typeof event.data === "object" && event.data.frame && event.data.height) {
+      document.getElementById(event.data.frame).style.height = event.data.height + "px";
+    }
+  };
+  window[listenerMethod](listenerMethod === "attachEvent" ? "onmessage" : "message", messageHandler, false);
+})();
+  </code>
+</pre>
+
+<h2>Sender inside the iframe</h2>
+<p>The embedded experience gathers the rendered height (after it finishes its own DOM updates) and posts that information up to the host.</p>
+<pre>
+  <code class="language-javascript">
+(function () {
+  var labels = document.querySelectorAll("label");
+  var index = labels.length;
+  while (index--) {
+    var label = labels.item(index);
+    var text = label.textContent;
+    if (label.parentNode.classList.contains("required")) {
+      text += "*";
+    }
+    label.nextElementSibling.setAttribute("placeholder", text);
+  }
+  if (parent.postMessage) {
+    parent.postMessage(
+      {
+        height: document.getElementById("content").offsetHeight,
+        frame: window.name,
+      },
+      "*",
+    );
+  }
+})();
+  </code>
+</pre>
+<p>With the host and iframe both handling their responsibilities, the cross-domain iframe fits the content without the user ever seeing scrollbars.</p>

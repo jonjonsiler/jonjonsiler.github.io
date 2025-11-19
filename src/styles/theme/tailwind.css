@@ -1,0 +1,157 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --spacing: 0.25rem;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Clash Display', var(--font-sans);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    @apply bg-slate-950 text-slate-100 antialiased;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.12), transparent 55%),
+      radial-gradient(circle at 80% 0%, rgba(167, 139, 250, 0.15), transparent 45%),
+      linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.98));
+    background-attachment: fixed;
+    min-height: 100vh;
+    --shell-sidebar-collapsed-width: 4.5rem;
+    --shell-sidebar-expanded-width: clamp(14rem, 21vw, 18rem);
+    --shell-sidebar-width: var(--shell-sidebar-expanded-width);
+    --shell-content-offset: var(--shell-sidebar-expanded-width);
+    --shell-transition-speed: 250ms;
+  }
+
+  body[data-nav-state='closed'] {
+    --shell-sidebar-width: var(--shell-sidebar-collapsed-width);
+    --shell-content-offset: var(--shell-sidebar-collapsed-width);
+  }
+
+  @media (max-width: 767px) {
+    body {
+      --shell-sidebar-width: var(--shell-sidebar-collapsed-width);
+      --shell-content-offset: var(--shell-sidebar-collapsed-width);
+    }
+
+    body[data-nav-state='open'] {
+      --shell-sidebar-width: min(85vw, var(--shell-sidebar-expanded-width));
+    }
+  }
+
+  a {
+    @apply font-medium text-sky-300 underline decoration-sky-500/50 underline-offset-4 transition-colors hover:text-sky-200;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply text-slate-50 font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply text-slate-200/90 leading-relaxed;
+  }
+
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  main {
+    @apply flex-1;
+  }
+
+  ::selection {
+    background-color: rgba(56, 189, 248, 0.35);
+    color: rgb(15, 23, 42);
+  }
+
+  [data-shell-sidebar] {
+    width: var(--shell-sidebar-width);
+    max-width: var(--shell-sidebar-width);
+    transition: width var(--shell-transition-speed) ease, box-shadow var(--shell-transition-speed) ease;
+  }
+
+  [data-shell-content] {
+    margin-left: var(--shell-content-offset);
+    transition: margin-left var(--shell-transition-speed) ease;
+  }
+
+  [data-sidebar-label] {
+    display: block;
+    width: auto;
+    white-space: nowrap;
+  }
+
+  body[data-nav-state='closed'] [data-sidebar-label] {
+    display: none;
+    width: 0;
+    margin-left: 0;
+  }
+
+  body[data-nav-state='closed'] [data-sidebar-link] {
+    gap: 0;
+    justify-content: center;
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-6xl px-6 py-16 md:px-10 lg:px-12;
+  }
+
+  .section-shell--compact {
+    @apply py-10;
+  }
+
+  .surface-card {
+    @apply border border-transparent;
+    /* disabled: @apply bg-slate-900/70 backdrop-blur-md border border-slate-800/70 shadow-xl shadow-slate-950/40; */
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-700/60 bg-slate-900/80 px-5 py-2 text-sm font-semibold uppercase tracking-wider text-slate-100 transition-all hover:border-slate-500 hover:bg-slate-800/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400;
+  }
+
+  .btn-primary {
+    @apply border-sky-400/70 bg-sky-400 text-slate-950 shadow-lg shadow-sky-500/35 hover:bg-sky-300;
+  }
+
+  .btn-muted {
+    @apply border-slate-700 bg-transparent hover:bg-slate-800/60;
+  }
+
+  .btn-sm {
+    @apply px-4 py-1.5 text-xs;
+  }
+
+  .btn-block {
+    @apply w-full;
+  }
+}

@@ -1,14 +1,40 @@
-<nav id="menu">
-    <ul class="links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/landing">Landing</a></li>
-        <li><a href="/generic">Generic</a></li>
-        <li><a href="/elements">Elements</a></li>
-    </ul>
-<!--
-    <ul class="actions vertical">
-        <li><a href="#" class="button special fit">Get Started</a></li>
-        <li><a href="#" class="button fit">Log In</a></li>
-    </ul>
--->
+---
+import { navLinks } from '@/data/links';
+
+interface Props {
+  orientation?: 'horizontal' | 'vertical';
+  size?: 'md' | 'sm';
+  variant?: 'default' | 'sidebar';
+  class?: string;
+}
+
+const {
+  size = 'md',
+  variant = 'default',
+  class: className = '',
+} = Astro.props as Props;
+
+const linkSize = size === 'md' ? 'text-xs md:text-sm' : 'text-[0.7rem]';
+const sidebarLink =
+  'group/sidebar-link flex w-full items-center gap-3 rounded-2xl text-sm font-semibold tracking-tight text-slate-200 transition hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400';
+const defaultLink =
+  'font-semibold uppercase tracking-[0.25em] text-slate-200 transition-colors hover:text-sky-300';
+---
+<nav class={`flex w-full flex-col ${className}`}>
+  {navLinks.map(({ href, label, icon: Icon }) => (
+    <a
+      href={href}
+      class={`${variant === 'sidebar' ? sidebarLink : defaultLink} ${variant !== 'sidebar' ? linkSize : ''}`}
+      aria-label={variant === 'sidebar' ? label : undefined}
+      data-sidebar-link={variant === 'sidebar' ? true : undefined}
+    >
+      <Icon className="text-xl text-slate-400 transition group-hover/sidebar-link:text-sky-300" aria-hidden="true" />
+      <span
+        class="sidebar-label min-w-0 overflow-hidden text-sm font-semibold tracking-wide text-slate-50 transition-[margin,width,opacity] duration-200"
+        data-sidebar-label
+      >
+        {label}
+      </span>
+    </a>
+  ))}
 </nav>

@@ -1,0 +1,74 @@
+<p>Part of my desire for figuring out how to setup a virtual machine is that one of my clients has a very tightly controlled VPN to access and edit the files on their file system. Currently, they use the OpenVPN "appliance" as one of the Google Compute Engine instances. While I'm able to use the OpenVPN client on my Mac computer, I wasn't really sure how this work on a Chrome OS based system, although I assumed this is something Google wants their cloud clients to be able to do.</p>
+<p>I started out looking at the Chromium OS code repo online, as I thought I would build and compile the source myself. but after trying to figure out what repo tools I needed, I assumed there must be a better (easier) option, since I really didn't desire to change the code, just experiment with the operating system. The download size of the repo itself is massive – I gave up around 1.9GB.</p>
+<p>I also remember that Hexxah used to host Chromium OS builds on his blog, but it appears that he no longer maintains this information, nor does he provide builds.</p>
+<p>I found that NeverWare's CloudReady software was a possible solution – it's based on the Chromium OS source – and once I filtered through all the license options, I figured out their <a href="https://www.google.com/url?q=https%3A%2F%2Fweb.archive.org%2Fweb%2F20180820031307%2Fhttps%3A%2F%2Fwww.neverware.com%2Ffreedownload%2F&amp;sa=D&amp;sntz=1&amp;usg=AOvVaw0yIFgsZInUazrJWZImnJ4_" target="_blank" rel="noopener noreferrer">Home Edition</a> was the best solution for what I needed given it's cost (FREE!) and it's personal license (I don't need this for business, yet). The 64-bit image file comes as a zip and you'll also need to install the <a href="https://www.google.com/url?q=https%3A%2F%2Fweb.archive.org%2Fweb%2F20180820031307%2Fhttps%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Fchromebook-recovery-utili%2Fjndclpdbaamdhonoechobihbbiimdgai%3Fhl%3Den-US%26utm_source%3Dchrome-ntp-launcher&amp;sa=D&amp;sntz=1&amp;usg=AOvVaw0OE4q5Jhg5hPSqAg3BOFCP" target="_blank" rel="noopener noreferrer">Chromebook Recovery Utility</a> (this is the same extension for both macOS and Windows). Unfortunately, there's just not a good way around using a usb drive, as the recovery utility can only "see" flash drives. The unpack and recovery disk process take about 20 minutes, depending on the relative speed of the computer.</p>
+<h2>Create the recovery disk</h2>
+<p>After installing the Chromebook Recovery Utility, you'll need to create a recovery disk. Open the Chromebook recovery Utility from your Chrome apps. In the window that opens click on the settings (gear) icon in the upper right hand corner of the app and choose "Use Local Image" from the menu.</p>
+<p>Once you've create your boot (recovery) USB drive, you need to do some additional steps to allow you to clone the USB to a vdmk image (<a href="https://www.google.com/url?q=https%3A%2F%2Fweb.archive.org%2Fweb%2F20180820031307%2Fhttps%3A%2F%2Fwww.sebastien-han.fr%2Fblog%2F2013%2F12%2F16%2Fvirtualbox-mac-os-x-10-dot-9-boot-from-an-usb-drive%2F&amp;sa=D&amp;sntz=1&amp;usg=AOvVaw2mi0vx1ag7XriFyhdJBTc6" target="_blank" rel="noopener noreferrer">thanks to Sebastian Han for the following steps</a>):</p>
+<pre>
+   <code class="language-shell">
+$ diskutil list
+/dev/disk0 (internal, physical):
+#: TYPE NAME SIZE IDENTIFIER
+0: GUID_partition_scheme *525.1 GB disk0
+1: EFI EFI 209.7 MB disk0s1
+2: Apple_HFS Macintosh HD 524.3 GB disk0s2
+3: Apple_Boot Recovery HD 650.0 MB disk0s3
+/dev/disk2 (external, physical):
+#: TYPE NAME SIZE IDENTIFIER
+0: GUID_partition_scheme *8.0 GB disk2
+1: Microsoft Basic Data 1.3 GB disk2s16
+2: FE3A2A5D-4F32-41A7-B725-ACCC3285A309 16.8 MB disk2s17
+3: 3CB8E202-3B7E-47DD-8A3C-7FF2A13CFCEC 3.2 GB disk2s18
+4: FE3A2A5D-4F32-41A7-B725-ACCC3285A309 16.8 MB disk2s19
+5: 3CB8E202-3B7E-47DD-8A3C-7FF2A13CFCEC 2.1 MB disk2s20
+6: Microsoft Basic Data 1.1 GB disk2s23
+7: CAB6E88E-ABF3-4102-A07A-D4BB9BE3C1D3 8.4 MB disk2s26
+8: EFI EFI-SYSTEM 16.8 MB disk2s27
+   </code>
+</pre>
+
+<p>In this case my USB drive was located at /dev/disk2, it may take some sleuthing to figure exactly which disk is the correct one if you have multiple partition and mounted drives. Make sure the disk is unmounted.</p>
+
+<pre>
+   <code class="language-shell" >
+$ diskutil unmountDisk /dev/disk2
+Unmount of all volumes on disk2 was successful
+   </code>
+</pre>
+
+<p>You'll also need to change permissions on the device before cloning the disk. It should go without saying, but the use of sudo should be reserved for only those users who know what they are doing to their computer and could cause irreparable damage to their personal computer.</p>
+
+<pre>
+   <code class="language-shell">
+$ sudo chown $USER /dev/disk2
+   </code>
+</pre>
+
+<p>Then you're ready to clone your USB drive!</p>
+
+<pre>
+   <code class="language-shell">
+$ VBoxManage internalcommands createrawvmdk -rawdisk /dev/disk2 -filename ~/Chrome-Boot.vmdk
+RAW host disk access VMDK file ~/Chrome-Boot.vmdk created successfully.
+   </code>
+</pre>
+
+<h2>Create the virtual machine</h2>
+<p>While setting up the virtual machine at this point should be the easiest part, it took some trial and error on my part to get it to boot correctly and allow me to install the OS on a virtual drive.</p>
+<h3>Settings overview</h3>
+<p>The following settings worked consistently for me, but you may need to experiment:</p>
+<ul>
+  <li>General: Other, Other/Unknown (64-bit)</li>
+  <li>System: 2GB RAM (It should probably be more), "Enable I/O APIC" and "Enable EFI (special OSes only)" checked — <em>EFI appears to be required for Chromium OS.</em></li>
+  <li>Screen: 64MB, "Enable 3D Acceleration" checked.</li>
+</ul>
+<p>I went ahead and created an empty VDI disk to load the OS onto once I was able to boot to it. It's not imperative to do it at this point, but you will need it to load the image permanently into your machine.</p>
+
+<h2>Boot Chromium OS</h2>
+<p><em>Here's the tricky part.</em> I couldn't figure out how to "hack" the boot order of the EFI without getting dumped to the EFI shell (I sure wasn't going to use that!). So I did the next best thing; I created my boot disk as the <em>primary master</em>, and the empty VDI as the <em>primary slave</em> (which kinda made me feel like I was back in 1993). This forced VirtualBox to boot from the boot disk clone.</p>
+<p>Once the system booted up (which took a good five minutes) all I needed to do was choose "Install CloudReady" from the user menu in Chromium OS. While the process says it only takes about 20 minutes, on my end it took around 40. The recovery system was real choppy in performance.</p>
+<p>Once CloudReady has been installed, it will turn off the appliance. Then all you need to do is remove the boot media from the devices list in VirtualBox settings for the machine and then change your once empty Chromium VDI to be the primary master. The installed version took about 4GB of disk space, so plan your storage needs appropriately.</p>
+
+<h2>So, what about OpenVPN…</h2>
+<p>Still working on that one... but I should know soon what the solution is.</p>

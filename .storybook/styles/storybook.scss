@@ -15,3 +15,7 @@ body {
   min-height: 100vh;
   padding: 1.5rem;
 }
+
+body.sb-main-padded.sb-show-main {
+  padding: 0;
+}
