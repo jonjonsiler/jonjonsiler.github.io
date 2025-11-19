@@ -1,16 +1,8 @@
 ---
+import NavToggle from '@components/NavToggle';
 ---
 <header class="sticky top-0 z-50 mx-auto flex w-full items-center pr-6 pl-3 py-4 border-b border-white/10 bg-slate-950/80 backdrop-blur">
-  <button
-    type="button"
-    class="btn btn-muted btn-sm z-40 flex h-11 w-11 mr-3 items-center justify-center rounded-2xl border border-sky-400/40 bg-sky-400/20 shadow-inner shadow-sky-500/30 transition hover:border-sky-300/80 hover:bg-sky-300/25"
-    data-nav-toggle
-    aria-controls="primary-navigation"
-    aria-expanded="true"
-  >
-    <span class="sr-only">Toggle navigation rail</span>
-    <i class="text-sm font-semibold text-sky-200">JS</i>
-  </button>
+  <NavToggle client:load />
   <a
     href="/"
     class="group flex items-baseline gap-4 text-left transition no-underline hover:underline"
