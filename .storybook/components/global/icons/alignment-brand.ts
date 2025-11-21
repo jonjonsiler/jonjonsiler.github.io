@@ -2,13 +2,13 @@ import {
   Curriculum,
   CurriculumPartner
 } from "@enums";
-import defaultIcon from "/images/curriculum/alignment/amira.svg";
+import defaultIcon from "/images/curriculum/alignment/amira.png";
 import elIcon from "/images/curriculum/alignment/el.png";
 import epsIcon from "/images/curriculum/alignment/eps_learning.png";
 import spireIcon from "/images/curriculum/alignment/eps_spire.png";
 import kiddomIcon from "/images/curriculum/alignment/kiddom.png";
-import bluebonnetIcon from "/images/curriculum/bluebonnet.png";
-import amiraIcon from "/images/curriculum/alignment/amira.svg";
+import bluebonnetIcon from "/images/curriculum/alignment/bluebonnet.png";
+import amiraIcon from "/images/curriculum/alignment/amira.png";
 import bayouBridgesIcon from "/images/curriculum/alignment/bayou_bridges.png";
 import cklaIcon from "/images/curriculum/alignment/ckla.png";
 import teaIcon from "/images/curriculum/alignment/tea.png";

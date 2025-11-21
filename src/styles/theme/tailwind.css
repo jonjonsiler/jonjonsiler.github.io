@@ -26,7 +26,7 @@
     background-attachment: fixed;
     min-height: 100vh;
     --shell-sidebar-collapsed-width: 4.5rem;
-    --shell-sidebar-expanded-width: clamp(14rem, 21vw, 18rem);
+    --shell-sidebar-expanded-width: clamp(12.5rem, 10vw, 14rem);
     --shell-sidebar-width: var(--shell-sidebar-expanded-width);
     --shell-content-offset: var(--shell-sidebar-expanded-width);
     --shell-transition-speed: 250ms;
