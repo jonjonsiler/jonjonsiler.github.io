@@ -42,11 +42,11 @@ export const CurriculumAlignment: React.FC<{curriculumName?: string}> = ({curric
                   : curriculumName === Curriculum.EPS_SPIRE
                     ? CurriculumPartner.EPS : CurriculumPartner.AMIRA);
     const curriculumLabel = curriculumName === Curriculum.WONDERS 
-      ? "Wonders"
+      ? "Oneders"
         : curriculumName === Curriculum.CKLA 
-          ? "Core Knowledge Language Arts" 
+          ? "Core Keeper Liberal Academy" 
             : curriculumName === Curriculum.UFLI 
-              ? Curriculum.UFLI.toUpperCase() 
+              ? 'ACOC' // Curriculum.UFLI.toUpperCase() 
                 : curriculumName;
     return {
       partner,
