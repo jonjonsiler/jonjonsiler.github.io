@@ -87,6 +87,7 @@ export const Tile: React.FC<TileProps> = ({
   }, [updateHoverBox, open]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const handleResize = () => updateHoverBox();
     window.addEventListener('resize', handleResize);
     return () => {
