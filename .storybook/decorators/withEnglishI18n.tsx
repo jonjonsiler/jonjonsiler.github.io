@@ -1,5 +1,5 @@
 import React from "react";
-import type { Decorator } from "@storybook/react";
+import type { Decorator } from "@storybook/react-vite";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import { createInstance, type Resource } from "i18next";
 import en from "../i18n/en.json";

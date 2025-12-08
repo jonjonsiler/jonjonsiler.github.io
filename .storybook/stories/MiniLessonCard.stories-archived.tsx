@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import MiniLessonCard from "./MiniLessonCard";
 import moment from "moment";
 import { MasteryStatus } from "@enums";
