@@ -1,4 +1,4 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react-vite";
 import { withEnglishI18n } from "./decorators/withEnglishI18n";
 import "./styles/storybook.scss";
 

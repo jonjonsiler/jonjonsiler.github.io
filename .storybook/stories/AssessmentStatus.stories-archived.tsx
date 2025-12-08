@@ -1,6 +1,6 @@
 import React from "react";
 import { WidgetAssessmentStatus, AssessmentStatusWidgetProps } from "../components/dashboard/AssessmentStatus/AssessmentStatus";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { withWidgetWrapper } from "../../../../.storybook/decorators";
 import { WidgetCategory, WidgetType } from "../enums";
 import { WidgetBase } from "../models";
