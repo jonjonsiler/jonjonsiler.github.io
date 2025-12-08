@@ -1,24 +1,8 @@
 ---
 import GenericPageLayout from '@layouts/generic.astro';
-import type { PostItem} from '@/models'; 
-import Post from '@components/post';
+import { Posts as BlogPosts } from '@components/posts';
 
-const apiURL = import.meta.env.API_BASE_URL;
-let posts: PostItem[] = [];
-
-if (apiURL) {
-  try {
-    const response = await fetch(`${apiURL}/api/posts.json`);
-    if (response.ok) {
-      const data = await response.json() as PostItem[];
-      if (Array.isArray(data)) {
-        posts = data;
-      }
-    }
-  } catch (error) {
-    console.warn('Failed to load posts, skipping remote content.', error);
-  }
-}
+const apiBaseUrl = import.meta.env.API_BASE_URL ?? '';
 ---
 <GenericPageLayout title="Blog Posts">
   <div class="section-shell space-y-10">
@@ -33,16 +17,6 @@ if (apiURL) {
         Occasional snapshots of the work, technology, and teams that keep me tinkering.
       </p>
     </header>
-    {posts.length ? (
-      <div class="grid gap-6">
-        {posts.map((post) => (
-          <Post post={post} client:load />
-        ))}
-      </div>
-    ) : (
-      <div class="surface-card space-y-4 rounded-3xl border border-slate-800/70 p-8 text-center text-sm text-slate-300 md:p-12">
-        <p>Fresh posts are in the works. Check back soon or reach out directly if you’d like to chat.</p>
-      </div>
-    )}
+    <BlogPosts apiBaseUrl={apiBaseUrl} client:load />
   </div>
 </GenericPageLayout>

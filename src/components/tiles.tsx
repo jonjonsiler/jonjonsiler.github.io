@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import classNames from 'classnames';
 import type { TileBlockProps } from '@/models';
+import { LoadingStatus } from '@/enums';
+import { useFetch } from '@/hooks';
 
 type TileProps = TileBlockProps & {
   column?: 'left' | 'right';
@@ -205,9 +207,55 @@ export const Tile: React.FC<TileProps> = ({
 
 
 export const Tiles: React.FC<{
-  features: Array<TileBlockProps>
-}> = ({ features }) => {
+  apiBaseUrl?: string;
+}> = ({ apiBaseUrl }) => {
+  const { data, status, error, reload } = useFetch<TileBlockProps[]>({
+    path: "/api/features.json",
+    apiBaseUrl,
+  });
+  const features = Array.isArray(data) ? data : [];
   const containerRef = useRef<HTMLDivElement>(null);
+
+  if (status === LoadingStatus.LOADING) {
+    return (
+      <div className="surface-card rounded-3xl border border-slate-800/70 p-8 text-center text-slate-300 md:p-12">
+        <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sky-300">
+          Loading
+        </p>
+        <p className="mt-3 text-base">Fetching feature tiles from the API…</p>
+      </div>
+    );
+  }
+
+  if (status === LoadingStatus.ERROR) {
+    return (
+      <div className="surface-card space-y-4 rounded-3xl border border-rose-800/70 p-8 text-center text-rose-100 md:p-12">
+        <p className="text-sm font-semibold uppercase tracking-[0.35em]">
+          API unreachable
+        </p>
+        <p className="text-base text-rose-50/80">
+          {error ?? 'Something went wrong while loading tiles.'}
+        </p>
+        <div className="flex justify-center">
+          <button
+            type="button"
+            onClick={reload}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white transition hover:border-sky-400/50 hover:text-sky-200"
+          >
+            Try again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!features.length) {
+    return (
+      <div className="surface-card space-y-4 rounded-3xl border border-slate-800/70 p-8 text-center text-sm text-slate-300 md:p-12">
+        <p>Tiles will show up here once the API has something to share.</p>
+      </div>
+    );
+  }
 
   return (
     <div ref={containerRef} className="grid md:grid-cols-2">

@@ -3,37 +3,13 @@ import BaseLayout from '@layouts/base.astro';
 import Banner from '@components/banner.astro';
 import { Tiles } from '@components/tiles';
 
-const apiURL = import.meta.env.API_BASE_URL;
-let features: Array<{
-  title: string;
-  subtitle: string;
-  detail?: string;
-  image: string;
-}> = [];
-
-if (apiURL) {
-  try {
-    const response = await fetch(`${apiURL}/api/features.json`);
-    if (response.ok) {
-      const data = await response.json() as typeof features;
-      if (Array.isArray(data)) {
-        features = data;
-      }
-    }
-  } catch (error) {
-    console.warn('Failed to load remote features, skipping remote content.', error);
-  }
-}
+const apiBaseUrl = import.meta.env.API_BASE_URL ?? '';
 ---
-<Fragment slot="head">
-	{features.map(({image}) => <link rel="preload" href={image} as="image" /> )}
-</Fragment>
-
 <BaseLayout title="Home">
   <Banner />
 	<section id="one" class="tiles">
       <div class="section-shell">
-        <Tiles features={features} client:load />
+        <Tiles apiBaseUrl={apiBaseUrl} client:load />
       </div>
 	</section>
 </BaseLayout>
