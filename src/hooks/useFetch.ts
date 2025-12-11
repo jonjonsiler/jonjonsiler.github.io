@@ -8,15 +8,15 @@ export type UseFetchResult<T> = {
   reload: () => Promise<void>;
 };
 
-type FetchTarget = string | { path: string; apiBaseUrl?: string };
+type FetchTarget = string | { path: string; apiBaseUrl?: string; apiKey?: string };
 
 /**
  * Small helper hook for fetching JSON resources with minimal state wiring.
  */
 export function useFetch<T>(target?: FetchTarget | null): UseFetchResult<T> {
-  const resolveUrl = useCallback((input?: FetchTarget | null) => {
-    if (!input) return null;
-    if (typeof input === "string") return input;
+  const resolveTarget = useCallback((input?: FetchTarget | null) => {
+    if (!input) return { url: null, apiKey: undefined };
+    if (typeof input === "string") return { url: input, apiKey: undefined };
 
     const base = input.apiBaseUrl ?? "";
     const normalizedBase = base.replace(/\/$/, "");
@@ -24,10 +24,13 @@ export function useFetch<T>(target?: FetchTarget | null): UseFetchResult<T> {
       ? input.path
       : `/${input.path}`;
 
-    return `${normalizedBase}${normalizedPath}`;
+    return {
+      url: `${normalizedBase}${normalizedPath}`,
+      apiKey: input.apiKey,
+    };
   }, []);
 
-  const url = useMemo(() => resolveUrl(target), [target, resolveUrl]);
+  const { url, apiKey } = useMemo(() => resolveTarget(target), [target, resolveTarget]);
   const [data, setData] = useState<T | null>(null);
   const [status, setStatus] = useState<LoadingStatus>(
     url ? LoadingStatus.LOADING : LoadingStatus.IDLE
@@ -51,8 +54,11 @@ export function useFetch<T>(target?: FetchTarget | null): UseFetchResult<T> {
     setError(null);
 
     try {
+      const headers: Record<string, string> = { Accept: "application/json" };
+      if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
+
       const response = await fetch(url, {
-        headers: { Accept: "application/json" },
+        headers,
         signal: controller.signal,
       });
 
@@ -69,7 +75,7 @@ export function useFetch<T>(target?: FetchTarget | null): UseFetchResult<T> {
       setError(message);
       setStatus(LoadingStatus.ERROR);
     }
-  }, [url]);
+  }, [url, apiKey]);
 
   useEffect(() => {
     reload();
