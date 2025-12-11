@@ -208,10 +208,12 @@ export const Tile: React.FC<TileProps> = ({
 
 export const Tiles: React.FC<{
   apiBaseUrl?: string;
-}> = ({ apiBaseUrl }) => {
+  apiKey?: string;
+}> = ({ apiBaseUrl, apiKey }) => {
   const { data, status, error, reload } = useFetch<TileBlockProps[]>({
-    path: "/api/features.json",
+    path: `/api/features.json`,
     apiBaseUrl,
+    apiKey
   });
   const features = Array.isArray(data) ? data : [];
   const containerRef = useRef<HTMLDivElement>(null);

@@ -4,12 +4,13 @@ import Banner from '@components/banner.astro';
 import { Tiles } from '@components/tiles';
 
 const apiBaseUrl = import.meta.env.API_BASE_URL ?? '';
+const apiKey = import.meta.env.API_KEY ?? '';
 ---
 <BaseLayout title="Home">
   <Banner />
 	<section id="one" class="tiles">
       <div class="section-shell">
-        <Tiles apiBaseUrl={apiBaseUrl} client:load />
+        <Tiles apiBaseUrl={apiBaseUrl} apiKey={apiKey} client:load />
       </div>
 	</section>
 </BaseLayout>

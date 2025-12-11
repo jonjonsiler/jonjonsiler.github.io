@@ -1,8 +1,9 @@
 export type PostItem = {
   id: string;
+  slug?: string;
   title: string;
   summary: string;
-  date: string;
+  publishedAt: string;
   contentHtml: string;
   contentText: string;
 };

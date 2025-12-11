@@ -10,8 +10,9 @@ export default function Post({ post }: { post: PostProps }) {
     day: "numeric",
     timeZone: "UTC",
   };
-  const formattedDate = new Date(post.date).toLocaleDateString("en-US", dateOptions);
-  const detailUrl = `/posts/${post.id}`;
+  const formattedDate = new Date(post.publishedAt).toLocaleDateString("en-US", dateOptions);
+  const slug = post.slug ?? post.id;
+  const detailUrl = `/posts/${slug}`;
   return (
     <article className="surface-card space-y-5 rounded-3xl border border-slate-800/70 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/60 hover:shadow-sky-500/20 md:p-8">
       <div className="group block space-y-5 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/80">
@@ -32,12 +33,14 @@ export default function Post({ post }: { post: PostProps }) {
   );
 }
 
-export const Posts = ({ apiBaseUrl }: {
+export const Posts = ({ apiBaseUrl, apiKey }: {
   apiBaseUrl?: string;
+  apiKey?: string;
 }) => {
   const { data, status, error, reload } = useFetch<PostProps[]>({
     path: "/api/posts.json",
     apiBaseUrl,
+    apiKey
   });
   const posts = Array.isArray(data) ? data : [];
 
@@ -50,7 +53,7 @@ export const Posts = ({ apiBaseUrl }: {
       ) : (
         <div className="grid gap-6">
           {posts.map((post) => (
-            <Post key={post.id} post={post} />
+            <Post key={post.slug ?? post.id} post={post} />
           ))}
         </div>
       );
