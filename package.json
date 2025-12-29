@@ -6,11 +6,14 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && npm run storybook:build",
     "preview": "astro preview",
     "typecheck": "astro check",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build --output-dir dist/storybook"
+    "build:storybook": "storybook build --output-dir dist/storybook",
+    "build:astro": "astro build",
+    "build:etsy": "vite build --config etsy-widget/vite.config.ts",
+    "build:etsy-feed": "node src/scripts/build-etsy-feed.mjs",
+    "build": "npm run build:astro && npm run build:storybook && npm run build:etsy && npm run build:etsy-feed"
   },
   "repository": {
     "type": "git",
