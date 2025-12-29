@@ -10,6 +10,7 @@ node_modules
 
 // Build
 .astro
+.wrangler
 dist
 
 // OS
