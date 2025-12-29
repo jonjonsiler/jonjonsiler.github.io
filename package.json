@@ -13,7 +13,9 @@
     "build:astro": "astro build",
     "build:etsy": "vite build --config etsy-widget/vite.config.ts",
     "build:etsy-feed": "node src/scripts/build-etsy-feed.mjs",
-    "build": "npm run build:astro && npm run build:storybook && npm run build:etsy && npm run build:etsy-feed"
+    "build": "npm run build:astro && npm run build:storybook && npm run build:etsy && npm run build:etsy-feed",
+    "pages:dev": "wrangler pages dev dist",
+    "pages:deploy": "wrangler pages deploy dist"
   },
   "repository": {
     "type": "git",
