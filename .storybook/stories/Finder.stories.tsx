@@ -7,7 +7,7 @@ const meta: Meta<typeof Finder> = {
   component: Finder,
   decorators: [
     (Story) => (
-      <div style={{ minHeight: '700px' }}>
+      <div>
         <style>
           {`.s-finder { height: 600px; }
             .s-finder .finder-nav { display: block; }`}
