@@ -19,11 +19,19 @@ const storybookItems: StorybookItem[] = [
   {
     title: 'Weekly Plan Widget',
     summary:
-      'A cross-section of the planning widget that keeps instructors aware of the plan status in every state from loading to fully ready.',
+      'A planning widget that keeps instructors aware of the weekly plan status loading to fully ready.',
     storyId: 'assignments-weekly-planner-widget-weekly-plan--ready-plan',
     badge: 'Assignments',
     height: 200,
     linkLabel: 'Ready state',
+  },
+  {
+    title: 'Student Navigation Control',
+    summary:
+      'A interactive navigation widget for pointing to the most common student actions on the site.',
+    storyId: 'components-finder--default',
+    badge: 'Global UX',
+    height: 800,
   },
   // {
   //   title: 'Assessment Status Monitor',
@@ -45,7 +53,7 @@ const storybookItems: StorybookItem[] = [
   {
     title: 'Curriculum Alignment Feed',
     summary:
-      'Shows the current curriculum alignment where the label adapts to each curriculum.',
+      'Shows the current curriculum alignment for a weekly plan',
     storyId: 'components-curriculum-alignment--all-of-them',
     badge: 'Curriculum',
     height: 350,
@@ -121,14 +129,14 @@ const resolveStoryLink = (storyId: string) =>
               Storybook
             </span>
           </div>
-          <a
+          {/* <a
             href={resolveStoryLink(item.storyId)}
             class="font-semibold uppercase tracking-[0.35em] text-sky-300 transition hover:text-sky-100"
             target="_blank"
             rel="noreferrer"
           >
             {item.linkLabel ?? 'Open story'}
-          </a>
+          </a> */}
         </div>
       </article>
     ))}
