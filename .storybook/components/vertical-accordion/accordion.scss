@@ -2,7 +2,6 @@ $agp_dark_blue: #003963;
 $white: #ffffff;
 
 .s-accordion {
-    margin-bottom: 3.875rem;
 
     .site-large &,
     .site-small & {
@@ -53,10 +52,6 @@ $white: #ffffff;
           background-color: #FFFFFF;
         }
       }
-    }
-
-    @media screen and (min-width: 576px) {
-        margin-bottom: 8.125rem;
     }
 
     @media screen and (min-width: 992px) {
@@ -170,10 +165,6 @@ $white: #ffffff;
         padding-bottom: 0;
         height: 0;
 
-        .accordion-body {
-            display: none;
-        }
-
         .accordion-image {
             position: absolute;
             display: block;
@@ -194,7 +185,7 @@ $white: #ffffff;
 
   @media screen and (min-width: 992px) {
     display: flex;
-    height: 53rem;
+    height: 40rem;
     width: 100%;
 
     &-card {
@@ -204,7 +195,7 @@ $white: #ffffff;
     }
 
     &-header {
-      width: 53rem;
+      width: 40rem;
       padding-top: 2.6875rem;
       padding-bottom: 2.6875rem;
       position: absolute;
@@ -245,10 +236,9 @@ $white: #ffffff;
       width: 0;
       position: relative;
       opacity: 0;
-      display: none;
 
       .accordion-content.show & {
-        transition: opacity 100ms linear;
+        transition: opacity 200ms linear 350ms;
         opacity: 1;
         width: 100%;
         display: block;
