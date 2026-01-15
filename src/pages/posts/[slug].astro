@@ -1,36 +1,75 @@
 ---
 import GenericPageLayout from "@layouts/generic.astro";
 import type { PostItem } from "@/models";
+import fs from "node:fs/promises";
+import path from "node:path";
 
 const apiBaseUrl = import.meta.env.API_BASE_URL ?? "";
 const apiKey = import.meta.env.API_KEY;
 const headers: Record<string, string> = { Accept: "application/json" };
 
+const fetchPostBySlug = async (slug: string) => {
+  if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
+  if (apiBaseUrl) {
+    try {
+      const response = await fetch(`${apiBaseUrl}/api/posts/${slug}.json`, {
+        headers,
+      });
+      if (response.ok) {
+        return (await response.json()) as PostItem;
+      }
+    } catch (error) {
+      // Fall back to the local file.
+    }
+  }
+
+  const postsFilePath = path.resolve(process.cwd(), "public/api/posts.json");
+  const fileContents = await fs.readFile(postsFilePath, "utf-8");
+  const posts = JSON.parse(fileContents) as PostItem[];
+  const post = posts.find((entry) => entry.slug === slug);
+  if (!post) {
+    throw new Response("Post not found", { status: 404 });
+  }
+  return post;
+};
+
 export async function getStaticPaths() {
   const site = import.meta.env.SITE ?? "http://localhost:4321";
-  const response = await fetch(new URL("/api/posts.json", site));
-  if (!response.ok) {
-    throw new Error(`Failed to load posts index: ${response.status}`);
+  const buildApiBaseUrl = import.meta.env.API_BASE_URL ?? "";
+  const candidates = [buildApiBaseUrl, site].filter(Boolean);
+  let posts: { slug: string }[] | null = null;
+
+  for (const base of candidates) {
+    try {
+      const response = await fetch(new URL("/api/posts.json", base));
+      if (response.ok) {
+        posts = (await response.json()) as { slug: string }[];
+        break;
+      }
+    } catch (error) {
+      // Fall through to next candidate or file fallback.
+    }
   }
-  const posts = (await response.json()) as { slug: string }[];
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-  }));
+
+  if (!posts) {
+    const postsFilePath = path.resolve(process.cwd(), "public/api/posts.json");
+    const fileContents = await fs.readFile(postsFilePath, "utf-8");
+    posts = JSON.parse(fileContents) as { slug: string }[];
+  }
+
+  return posts
+    .map((post) => ({ slug: post.slug ?? (post as { id?: string }).id }))
+    .filter((post) => typeof post.slug === "string" && post.slug.length > 0)
+    .map((post) => ({
+      params: { slug: post.slug as string },
+    }));
 }
 
 const { slug } = Astro.params;
-if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
-if (!apiBaseUrl) {
+if (!slug) {
   throw new Response("Post not found", { status: 404 });
 }
-
-const response = await fetch(`${apiBaseUrl}/api/posts/${slug}.json`, {
-  headers,
-});
-if (!response.ok) {
-  throw new Response("Post not found", { status: response.status });
-}
-const post = (await response.json()) as PostItem;
+const post = await fetchPostBySlug(slug);
 
 const dateOptions: Intl.DateTimeFormatOptions = {
   year: "numeric",
