@@ -1,0 +1,7 @@
+name = "jonjonsiler-site"
+compatibility_date = "2024-12-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "personal_web_content"
+database_id = "56a8da65-09f9-41c4-8efe-9d00f79e3d7a"
