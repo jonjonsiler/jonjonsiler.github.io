@@ -1,3 +1,5 @@
+import type { Fetcher } from "@cloudflare/workers-types";
+
 export async function onRequestGet(context: {
   request: Request;
   env: { ASSETS: Fetcher };
@@ -17,9 +19,12 @@ export async function onRequestGet(context: {
   }
 
   // Force JSON content-type + allow some caching (adjust as you like)
-  const headers = new Headers(assetResp.headers);
-  headers.set("content-type", "application/json; charset=utf-8");
-  headers.set("cache-control", "public, max-age=300");
-
-  return new Response(assetResp.body, { status: 200, headers });
+  const headers: Record<string, string> = {};
+  assetResp.headers.forEach((value, key) => {
+    headers[key] = value;
+  });
+  headers["content-type"] = "application/json; charset=utf-8";
+  headers["cache-control"] = "public, max-age=300";
+  const body = await assetResp.arrayBuffer();
+  return new Response(body, { status: 200, headers });
 }
