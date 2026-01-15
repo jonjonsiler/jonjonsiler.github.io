@@ -10,10 +10,23 @@ type PostRow = {
   contentText: string;
 };
 
+const isAuthorized = (request: Request, apiKey?: string) => {
+  if (!apiKey) return true;
+  const header = request.headers.get("authorization") ?? "";
+  return header === `Bearer ${apiKey}`;
+};
+
 export async function onRequestGet(context: {
-  env: { DB: D1Database };
+  request: Request;
+  env: { DB: D1Database; API_KEY?: string };
   params: { slug?: string };
 }) {
+  if (!isAuthorized(context.request, context.env.API_KEY)) {
+    return new Response(JSON.stringify({ error: "Unauthorized." }), {
+      status: 401,
+      headers: { "content-type": "application/json; charset=utf-8" },
+    });
+  }
   const slug = context.params.slug;
   if (!slug) {
     return new Response(JSON.stringify({ error: "Missing slug." }), {
