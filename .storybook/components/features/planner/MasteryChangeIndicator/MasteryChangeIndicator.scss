@@ -1,0 +1,15 @@
+.mastery-change {
+  margin-top: 0.75rem;
+  overflow: visible;
+
+  &-text {
+    color: var(--brand-amira-charcoal, #262626);
+    font-family: "Roboto Condensed";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    font-variant: all-small-caps;
+    letter-spacing: 0.0175rem;
+  }
+}
