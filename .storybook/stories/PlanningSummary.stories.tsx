@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PlanningSummary } from '@components/dashboard';
 
 const meta: Meta<typeof PlanningSummary> = {
-  title: 'Dashboard/PlanningSummary',
+  title: 'Components/Planning Summary',
   component: PlanningSummary,
   argTypes: {
     studentsStruggling: { control: 'number' },

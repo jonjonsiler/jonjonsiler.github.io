@@ -4,7 +4,7 @@ import { WidgetWeeklyPlan } from "@components/dashboard";
 import { AsyncLoadingState } from "@enums";
 
 export default {
-  title: "Assignments/Weekly Planner/Widget Weekly Plan",
+  title: "Components/Weekly Plan Widget",
   component: WidgetWeeklyPlan,
   args: {
     dateString: "January 15 - January 21",
