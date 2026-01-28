@@ -1,0 +1,11 @@
+<svg width="128" height="94" viewBox="0 0 128 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 0.5H120C124.142 0.5 127.5 3.85786 127.5 8V86C127.5 90.1421 124.142 93.5 120 93.5H8C3.85786 93.5 0.5 90.1421 0.5 86V8C0.5 3.85786 3.85786 0.5 8 0.5Z" fill="#f9fdfb"/>
+<path d="M8 0.5H120C124.142 0.5 127.5 3.85786 127.5 8V86C127.5 90.1421 124.142 93.5 120 93.5H8C3.85786 93.5 0.5 90.1421 0.5 86V8C0.5 3.85786 3.85786 0.5 8 0.5Z" stroke="#e3f7f1"/>
+<path d="M22 22C60.5 22 69.25 22 106 22" stroke="#262626" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="99.5" y="15.5" width="13" height="13" rx="6.5" fill="#00CA72"/>
+<rect x="99.5" y="15.5" width="13" height="13" rx="6.5" stroke="#006539"/>
+<rect x="15.5" y="15.5" width="13" height="13" rx="6.5" fill="#00CA72"/>
+<rect x="15.5" y="15.5" width="13" height="13" rx="6.5" stroke="#006539"/>
+<path d="M106.5 85C106.5 84.7239 106.276 84.5 106 84.5C105.724 84.5 105.5 84.7239 105.5 85H106.5ZM106 85H105.5V93H106H106.5V85H106Z" fill="#37414B" style="mix-blend-mode:color-burn"/>
+<path d="M22.5 85C22.5 84.7239 22.2761 84.5 22 84.5C21.7239 84.5 21.5 84.7239 21.5 85H22.5ZM22 85H21.5V93H22H22.5V85H22Z" fill="#37414B" style="mix-blend-mode:color-burn"/>
+</svg>

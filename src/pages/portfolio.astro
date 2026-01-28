@@ -17,13 +17,20 @@ const storybookBaseUrl = normalizeBase(
 
 const storybookItems: StorybookItem[] = [
   {
+    title: 'Rollover Follow-Up Module',
+    summary:
+      'A module that helps instructors identify and plan follow-up instruction for students needing reteach or pre-teach support.',
+    storyId: 'components-rollover-follow-up--populated',
+    badge: 'Planner',
+    height: 1000,
+  },
+  {
     title: 'Weekly Plan Widget',
     summary:
       'A planning widget that keeps instructors aware of the weekly plan status loading to fully ready.',
-    storyId: 'assignments-weekly-planner-widget-weekly-plan--ready-plan',
+    storyId: 'components-weekly-plan-widget--ready-plan',
     badge: 'Assignments',
     height: 200,
-    linkLabel: 'Ready state',
   },
   {
     title: 'Student Navigation Control',
@@ -54,7 +61,7 @@ const storybookItems: StorybookItem[] = [
     title: 'Planning Summary Snapshot',
     summary:
       'A compact status of planning signals that gives teachers instant context on classroom readiness.',
-    storyId: 'dashboard-planningsummary--default',
+    storyId: 'components-planning-summary--default',
     badge: 'Dashboard',
     height: 316,
   },
@@ -96,11 +103,11 @@ const resolveStoryLink = (storyId: string) =>
         Product &amp; UI workbench
       </p>
       <h1 class="text-4xl font-semibold tracking-tight text-white md:text-5xl">
-        Portfolio experiments from the Storybook system
+        Portfolio examples using embedded Storybook stories
       </h1>
     </header>
     <p class="mx-auto max-w-3xl text-sm text-slate-300 md:mx-0 md:text-base">
-      Each module below is rendered directly from the live Storybook instance so you can explore how the widgets behave in their natural environment—ready states, empty states, and loading skeletons included.
+      Each module below streams from the live Storybook instance so you can explore real widget behavior across ready, empty, and loading states.
     </p>
   </section>
 

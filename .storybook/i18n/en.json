@@ -19,6 +19,98 @@
         "STUDENTS_NOT_READY_one": "1 student is not ready",
         "STUDENTS_NOT_READY_other": "{{count}} students are not ready",
         "STUDENTS_UNDERBOOKED_one": "1 student is underbooked",
-        "STUDENTS_UNDERBOOKED_other": "{{count}} students are underbooked"
+        "STUDENTS_UNDERBOOKED_other": "{{count}} students are underbooked",
+        "estimated_minutes_assigned": "Estimated minutes assigned",
+        "green": "Green",
+        "green_ideal": "Ideal amount of assigned time",
+        "red": "Red",
+        "red_too_many_few": "Too many or too few minutes assigned",
+        "gray": "Gray",
+        "gray_teacher_modified": "Teacher modified the suggested time",
+        "blue": "Blue",
+        "blue_optimal": "Optimal assigned time"
+    },
+  "rolloverWizard": {
+    "Plan Reteach": "Plan Reteach",
+    "RETEACH_TITLE": "Review Last Week's Lessons (<dateRange/>)",
+    "Plan Pre-teach": "Plan Pre-teach",
+    "PRETEACH_TITLE": "Prerequisites for Upcoming Lessons (<dateRange/>)",
+    "PRETEACH_SUBTITLE": "Some students need additional instruction before they will be ready for next week's skills.",
+    "Plan Teach": "Plan Teach",
+    "Smart Summary": "Smart Summary",
+    "Assignments Completed": "Assignments Completed",
+    "Ready to Move On": "Ready to Move On",
+    "Ready to Learn": "Ready to Learn",
+    "Insufficient Data": "Insufficient Data",
+    "Follow-up Activities": "Follow-up Activities",
+    "Skills from Last Week": "Skills from Last Week",
+    "Skills from Upcoming Lessons": "Skills from Upcoming Lessons",
+    "Needs More Time": "Needs More Time",
+    "Need Prerequisites": "Need Prerequisites",
+    "Need Prerequisite Skills": "Need Prerequisite Skills",
+    "Need Prerequisite Skills_TOOLTIP": "Students who haven't mastered important prerequisite skills for the objective skill appear in this list.",
+    "To Be Added to Plan": "To Be Added to Plan",
+    "Edit": "Edit",
+    "No students needing follow-up": "No students needing follow-up",
+    "No prerequisites available": "No prerequisites available",
+    "None": "None",
+    "INCOMPLETE": "{{count}} Incomplete Assignment",
+    "INCOMPLETE_plural": "{{count}} Incomplete Assignments",
+    "TEACHER": "Teacher Instruction",
+    "PREREQ": "{{count}} Prerequisite Skill",
+    "PREREQ_plural": "{{count}} Prerequisite Skills",
+    "TUTOR": "{{count}} Tutoring Session",
+    "TUTOR_plural": "{{count}} Tutoring Sessions",
+    "PREREQ_MESSAGE":
+      "{{firstName}} is most likely not ready for this upcoming lesson skill. They are missing a prerequisite skill.",
+    "PREREQ_MESSAGE_MASTERED":
+      "{{firstName}} has likely mastered this prerequisite skill.",
+    "PREREQ_MESSAGE_AT_GRADE_LEVEL":
+      "{{firstName}} is at grade level for this prerequisite skill.",
+    "PREREQ_MESSAGE_BELOW_GRADE_LEVEL":
+      "{{firstName}} is most likely not ready for this upcoming lesson skill. They are missing a prerequisite skill.",
+    "PREREQ_MESSAGE_NO_DATA":
+      "{{firstName}} has not collected data for {{firstName}} for this prerequisite skill.",
+    "PREREQ_LABEL": "prerequisite skill mastery",
+    "TIME_NEEDED_MESSAGE":
+      "{{firstName}} incorrectly responded {{correctCount}} out of {{exposureCount}} times during this week's observations of the skill.",
+    "TIME_NEEDED_LABEL": "",
+    "SHOW_LESS": "Show Less",
+    "SHOW_MORE_AT_GRADE_LEVEL": "Show {{count}} More At-Grade-Level Student",
+    "SHOW_MORE_AT_GRADE_LEVEL_plural": "Show {{count}} More At-Grade-Level Students"
+  },
+    "student_mastery_group": {
+        "time_to_growth_tooltip": "Recommended weekly assignment time needed to advance to the next mastery level for this skill. Compare this to Time Assigned to see if you're on track for growth this week.",
+        "time_to_growth": "TIME TO GROWTH",
+        "time_assigned": "TIME ASSIGNED",
+        "add_high_quality_instructional_materials": "Add High-Quality Instructional Materials",
+        "search_results": "Search Results",
+        "collapse_mastery_group": "Collapse Mastery Group",
+        "expand_mastery_group": "Expand Mastery Group",
+        "teacher_resource": "teacher resource",
+        "microlesson": "microlesson",
+        "tutor": "tutor",
+        "time_to_growth_alt": "time to growth",
+        "info": "info",
+        "open_assignment_modal": "open assignment modal",
+        "estimated_skills_mastery": "Estimated Skills Mastery",
+        "estimated_mastery": "Estimated Mastery",
+        "tooltip_ready_to_move_on": "These students have improved in the skills for the week and are ready to continue in the scope & sequence.",
+        "tooltip_needs_more_time": "These students have either not improved or have unfinished assignments.",
+        "tooltip_insufficient_data": "These students do not have enough observations on the skills to determine their current mastery."
+    },
+    "skills_status_report": {
+        "error_plural": "errors",
+        "observation_plural": "observations"
+    },
+    "standards_mastery_report": {
+        "not_developed": "Not developed",
+        "developing": "Developing",
+        "likely_mastered": "Likely mastered",
+        "no_data": "No data"
+    },
+    "common": {
+        "error": "error",
+        "observation": "observation"
     }
 }
