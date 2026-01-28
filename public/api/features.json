@@ -2,37 +2,37 @@
     {
         "title": "JavaScript",
         "subtitle": "Been fiddlin' with JavaScript since ECMAScript v2",
-        "detail": "Using React, Vue, jQuery, and vanilla JS. A little AfterEffects expression script to keep it real. Even some Node.js on the side.",
+        "detail": "Back when “tooling” meant a browser, a prayer, and whatever the console decided to reveal to mortals that day. Since then it’s been a long apprenticeship in turning chaotic requirements into calm interfaces: single‑page apps that load fast, behave predictably, and don’t punish users for daring to click twice.\n\nDay‑to‑day I ship and modernize front ends with React, Angular, Vue, jQuery, and plenty of vanilla JS—plus Node.js when the job needs glue code, build tooling, or a quick server side assist. I’ve also written the occasional AfterEffects expression script, because sometimes motion design needs a tiny bit of logic to keep it honest. Under the hood I’m picky about performance, accessibility, and maintainability—code that won’t require a séance to debug six months later.",
         "image": "/images/pic02.jpg"
     },
     {
         "title": "CSS",
         "subtitle": "Old school CSS lover, recovering table layout developer",
-        "detail": "",
+        "detail": "Recovery is… ongoing. I mean, we still need tables to show these huge tables of data we're creating. These days I build responsive, component‑driven styling that holds its shape under real content, real screens, and real deadlines.\n\nI treat CSS like interface physics: constraints, edge cases, and the quiet craft of making things feel sturdy. Clean semantics, accessible states, predictable spacing, and styles that don’t leak into the next room and start rearranging the furniture. When a design system is in play, I help it stay coherent—not just pretty.",
         "image": "/images/pic04.jpg"
     },
     {
         "title": "Design",
         "subtitle": "Design? Yeah, I've done some of that, too.",
-        "detail": "",
+        "detail": "I care about hierarchy, pacing, and clarity—the little decisions that keep an interface from feeling like a junk drawer. With two Heartland Emmy awards under my belt — from my early career designing sets and creating package graphics for television — design isn't just an afterthought, it's a foundational. I like components that communicate intent, not just aesthetics.\n\nThe best design work is the kind nobody notices because it works: it guides, reassures, stays readable under stress, and respects users who don’t experience the world the same way. Accessibility isn’t a checklist item—it’s a design truth, and it’s part of how I decide something is actually finished.",
         "image": "/images/pic05.jpg"
     },
     {
         "title": "Project Management",
         "subtitle": "Managing complex web projects with small frisky teams.",
-        "detail": "",
+        "detail": "Translation: keeping scope from shape‑shifting into an eldritch creature, turning fuzzy stakeholder dreams into buildable plans, and steering delivery without sacrificing quality to the gods of “just ship it.”\n\nI’m comfortable being the connective tissue—running discovery, unblocking engineers, setting standards, and making reality legible. The job is part logistics, part psychology, part engineering triage… and I’ve done enough of it to know that good communication is less about meetings and more about decisions that stick.",
         "image": "/images/pic01.jpg"
     },
     {
         "title": "PHP",
-        "subtitle":"OOPer and MVCer. Enjoy developing in CMS frameworks",
-		"detail": "Laravel is a king, I've also worked with WordPress, Drupal, and Joomla.",
-        "image":"/images/pic03.jpg"
+        "subtitle": "OOPer and MVCer. Enjoy developing in CMS frameworks",
+        "detail": "PHP was my early proving ground: server‑side logic, templating, data flow, and the sacred art of shipping features people can actually use tomorrow.\n\nLaravel is a king, and I’ve also worked with WordPress, Drupal, and Joomla—building and extending CMS platforms, handling upgrades, migrations, performance tuning, and the real‑world maintenance reality that keeps legacy systems upright while you quietly replace their bones with something modern.",
+        "image": "/images/pic03.jpg"
     },
     {
         "title": "Other",
         "subtitle": "Project planning, scoping, estimating and troubleshooting; if it's on the web I can probably figure it out.",
-        "detail": "",
+        "detail": "“Other” is where the real work hides: authentication flows that must be secure and humane, weird integrations, legacy constraints, tooling migrations, and the thousand paper cuts that separate a demo from a dependable product.\n\nI’m the person who enjoys being dropped into a messy system and making it understandable again: trace the behavior, name the patterns, cut the noise, fix the root, document the trap doors, and leave the place cleaner than I found it. Not glamorous. Extremely effective.",
         "image": "/images/pic06.jpg"
     }
 ]
